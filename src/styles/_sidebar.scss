@@ -1,0 +1,128 @@
+.sidebar {
+  font-family: $normal-font;
+  font-size: $xs-font;
+  margin-bottom: 100px;
+
+  @media screen and (max-width: $screen-md) {
+    text-align: center;
+  }
+
+  &__figure {
+    text-align: center;
+  }
+
+  &__figure-img {
+    max-width: 300px;
+  }
+
+  &__list {
+    //column-count: 3;
+    margin-bottom: 50px;
+  }
+
+  &__list--news {
+    @media screen and (max-width: $screen-sm-max) {
+      width: calc(100% / 2);
+      //margin-right: 10px;
+      float: left;
+      //margin-right: 15vw;
+      //float: left;
+    }
+  }
+
+  &__list--hours {
+    @media screen and (max-width: $screen-sm-max) {
+      width: calc(100% / 2);
+      //margin-right: 10px;
+      float: right;
+      //margin-right: 15vw;
+      //float: left;
+    }
+  }
+
+  &__list--contact {
+    @media screen and (max-width: $screen-md-max) {
+      //margin-top: 40px;
+      //width: calc(100% / 2);
+      //margin: 0 auto;
+    }
+  }
+
+  &__list li {
+    margin-bottom: 5px;
+  }
+
+  &__list li:first-child a {
+    @include headings;
+    color: $dark-brown;
+    margin-bottom: 25px;
+  }
+
+  &__list--contact li:not(:first-child) a {
+    position: relative;
+    margin-left: 24px;
+
+    @media screen and (max-width: $screen-xs-max) {
+      margin-left: 0;
+    }
+
+    &:before {
+      content: '';
+      background-size: contain;
+      position: absolute;
+      left: -24px;
+      top: 3px;
+      width: 18px;
+      height: 18px;
+
+      @media screen and (max-width: $screen-xs-max) {
+        //left: 10vw;
+      }
+    }
+  }
+
+  &__list--contact li:nth-child(2) a {
+    &:before {
+      background-image: url("#{$img-path}/assets/mail.png");
+    }
+  }
+
+  &__list--contact li:nth-child(3) a {
+    &:before {
+      background-image: url("#{$img-path}/assets/phone.png");
+    }
+  }
+
+  &__list--contact li:nth-child(4) a {
+    &:before {
+      background-image: url("#{$img-path}/assets/location.png");
+    }
+  }
+
+  &__form-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+
+  &__form-label {
+    font-family: $normal-font;
+    font-size: $s-font;
+    font-weight: 100;
+    margin-bottom: 15px;
+  }
+
+  &__figure-description {
+    font-family: $normal-font;
+    font-size: $s-font;
+    color: $dark-brown;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  &__figure-img {
+    width: 100%;
+    margin-bottom: 50px;
+  }
+
+}

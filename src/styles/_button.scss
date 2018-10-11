@@ -1,0 +1,31 @@
+.button {
+  border-radius: 0;
+  font-size: $s-font;
+  padding: 10px 20px;
+  text-transform: capitalize;
+  color: $dark-brown;
+  font-family: $title-font;
+  display: block;
+  transition: background-size 0.5s ease-out, background-color 1s, color  1s;
+  background-color: $light-green;
+  background-size: 0% 100%;
+
+  &--product-box {
+    position: relative;
+    z-index: 2;
+  }
+
+  &--overlay-box {
+    background-color: darken($light-green,10%);
+  }
+
+  &:hover {
+    background-image:linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,.7) 100%);
+    background-repeat:no-repeat;
+    background-size: 200% 100%;
+    transition: background-size 0.5s ease-out, background-color 0.5s, color  0.5s;
+    background-color: saturate($light-green, 15%);
+    color: lighten($dark-brown, 15%);
+  }
+
+}

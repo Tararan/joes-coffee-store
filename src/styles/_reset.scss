@@ -1,0 +1,107 @@
+html, body {
+  //background: radial-gradient(ellipse 75% 125%, lighten($light-brown,30%), lighten($light-brown,5%));
+  //background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.disable-scrolling {
+  overflow-y: hidden;
+  padding-right: 17px;
+
+  @media screen and (max-width: $screen-xs-max) {
+    overflow: hidden;
+    height: 100%;
+    padding-right: 0;
+  }
+}
+
+main {
+  padding-top: 92px;
+  background: radial-gradient(ellipse 75% 125%, lighten($light-brown, 30%), lighten($light-brown, 5%));
+  background-size: cover;
+  overflow-x: hidden;
+  //height: 100%;
+  //width: 100%;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  width: 100%;
+}
+
+a, p, span {
+  font-family: Oswald, sans-serif;
+  font-size: 1.1em;
+}
+
+a {
+  color: darken($light-green, 10%);
+  transition: color 0.2s ease-out;
+}
+
+a:hover,
+a:focus {
+  color: saturate($light-green, 15%);
+}
+
+main {
+  filter: blur(0);
+  transition: filter 0.7s linear;
+}
+
+.main--is-blurred {
+  filter: blur(20px);
+  transition: filter 0.5s linear;
+}
+
+.blurred-content__frame {
+  overflow: hidden;
+  display: block;
+  z-index: 150;
+  height: 398px;
+  text-align: center;
+  margin: 0 auto;
+  top: 100vh;
+  position: absolute;
+  width: 100%;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.3s ease-in,opacity 0.3s ease-in;
+}
+
+@media screen and (max-width: $screen-xs-max) {
+  .blurred-content__frame--visible {
+    opacity: 1;
+    visibility: visible;
+    transition: visibility 0.3s ease-in, opacity 0.3s ease-in;
+  }
+}
+
+.blurred-content {
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  overflow-y: hidden;
+  right: 0;
+  left: 0;
+  top: 0;
+  position: absolute;
+  filter: blur(20px);
+}

@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Lobster+Two');
+@import url('https://fonts.googleapis.com/css?family=Oswald:300');
+
+$xxl-font: 10em;
+$xl-font: 7em;
+$l-font: 5em;
+$m-font: 3em;
+$s-font: 1.5em;
+$xs-font: 1em;
+
+$normal-font: Oswald, sans-serif;
+$title-font: Lobster Two, cursive;
+
+@mixin title {
+  color: $dark-brown;
+
+  display: block;
+  font-family: Lobster, cursive;
+  font-size: $xxl-font;
+
+   @media screen and (max-width: 992px) {
+    font-size: $xl-font;
+  }
+
+  @media screen and (max-width: 414px) {
+    font-size: $l-font;
+  }
+
+}
+
+@mixin subtitle {
+  color: $dark-brown;
+  display: block;
+  text-align: center;
+  font-family: Oswald, cursive;
+  //font-family: Lobster Two, cursive;
+  font-size: $xl-font;
+
+  @media screen and (max-width: $screen-xs-max) {
+    font-size: $l-font;
+  }
+
+  @media screen and (max-width: 414px) {
+    font-size: $m-font;
+  }
+
+}
+
+@mixin headings {
+  color: $light-brown;
+  font-family: Oswald, sans-serif;
+  font-size: $s-font;
+}
+
+@mixin normal-txt {
+  color: $light-brown;
+  font-family: Oswald, sans-serif;
+  font-size: $xs-font;
+}
+
+@mixin styling {
+  position: relative;
+  background-color: $brown;
+  padding: 10px;
+  width: calc(100% - 33px);
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 33px solid $brown;
+    border-bottom: 33px solid $brown;
+    right: -33px;
+    border-right: 33px solid transparent;
+  }
+
+}

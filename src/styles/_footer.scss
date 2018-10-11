@@ -1,0 +1,13 @@
+.footer {
+  text-align: center;
+  color: $light-brown;
+  padding: 15px 0 5px 0;
+  background-image: linear-gradient(to bottom, $brown, darken($brown,2%));
+  filter: blur(0);
+  transition: filter 0.7s linear;
+
+  &--is-blurred {
+    filter: blur(20px);
+    transition: filter 0.5s linear;
+  }
+}

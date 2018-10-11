@@ -1,0 +1,153 @@
+.Nav {
+  position: absolute;
+  //position: fixed;
+  z-index: 1000;
+  top: 100vh;
+  left: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  background-image: linear-gradient(to bottom, $brown, darken($brown, 2%));
+  height: 49px;
+  transition: filter 0.5s linear;
+
+  @media screen and (max-width: $screen-xs-max) {
+    &:before {
+      background-image: url("#{$img-path}/logo.png");
+      content: "";
+      z-index: 50;
+      background-size: contain;
+      position: absolute;
+      left: 3px;
+      top: 3px;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+&-hamburger {
+  color: $light-green;
+  padding-top: 18px;
+  margin-left: 10px;
+  margin-right: 20%;
+  display: none;
+
+  @media (max-width: $screen-sm) {
+    margin: 0 auto;
+    text-align: center;
+    float: right;
+    display: block;
+  }
+}
+
+&-hamburger-line {
+  background-color: $light-brown;
+  display: block;
+  width: 30px;
+  height: 2px;
+  display: block;
+  margin-bottom: 5px;
+  transform: rotate(0deg);
+  transition: 0.15s ease-in-out;
+}
+
+&-hamburger:hover &-hamburger-line {
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 1);
+}
+
+&-hamburger--is-open &-hamburger-line--first {
+  margin-top: 4px;
+  margin-bottom: -1px;
+  transform: rotate(135deg);
+}
+
+&-hamburger--is-open &-hamburger-line--second {
+  margin-bottom: -2px;
+  transform: rotate(-135deg);
+}
+
+&-hamburger--is-open &-hamburger-line--third {
+  margin-bottom: 10px;
+  transform: rotate(-135deg);
+}
+
+&--is-sticky {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  width: 100%;
+  height: 49px;
+}
+
+&-list {
+  display: block;
+  text-align: center;
+  padding: 0 -3vw;
+
+  @media (max-width: $screen-sm) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 49px;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0.3s ease-in, opacity 0.3s ease-in;
+  }
+}
+
+&-list--is-open {
+  opacity: 0.75;
+  visibility: visible;
+  transition: visibility 0.3s ease-in, opacity 0.3s ease-in;
+  padding-bottom: 110%;
+}
+
+&-list li {
+  display: inline;
+}
+
+& ul li a {
+  @include headings;
+  display: inline-block;
+  padding: 8px 2vw 12px 2vw;
+  transition: color 0.5s;
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 0;
+    height: 3px;
+    background: $light-brown;
+    transition: width 0.3s;
+  }
+
+  &:hover {
+    color: white;
+    text-shadow: 0 0 30px $light-brown;
+    background-size: 100%;
+    background-position: center center;
+    transition: color 0.15s;
+
+    &:after {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    background-image: radial-gradient(
+      ellipse 75% 100%,
+      rgba(90, 60, 29, 0.75),
+      rgba(62, 41, 20, 0.75)
+    );
+    //background-image: radial-gradient(ellipse 75% 100%, $brown, darken($brown, 3%));
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid darken($brown, 3%);
+  }
+}
+}

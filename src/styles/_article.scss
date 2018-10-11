@@ -1,0 +1,16 @@
+.article  {
+
+  &__title {
+    @include headings;
+    font-size: $m-font;
+  }
+
+  &__description {
+    margin-bottom: 40px;
+  }
+
+  &__description mark {
+    padding: 0;
+  }
+
+}
