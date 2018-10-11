@@ -7,6 +7,8 @@ html, body {
 
 body {
   overflow-x: hidden;
+  background: radial-gradient(ellipse 75% 125%, lighten($light-brown, 30%), lighten($light-brown, 5%));
+  background-size: cover;
 }
 
 .disable-scrolling {
@@ -22,8 +24,8 @@ body {
 
 main {
   padding-top: 92px;
-  background: radial-gradient(ellipse 75% 125%, lighten($light-brown, 30%), lighten($light-brown, 5%));
-  background-size: cover;
+/*   background: radial-gradient(ellipse 75% 125%, lighten($light-brown, 30%), lighten($light-brown, 5%));
+  background-size: cover; */
   overflow-x: hidden;
   //height: 100%;
   //width: 100%;

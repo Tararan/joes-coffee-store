@@ -1,9 +1,9 @@
 @import './variables/variables';
 @import './reset';
 
-
 @import '../Header/header';
 @import '../Nav/Nav';
+@import '../Aside/Sidebar';
 
 @import './article';
 @import './button';
@@ -11,4 +11,3 @@
 @import './layout';
 @import './overlay';
 @import './products';
-@import './sidebar';
