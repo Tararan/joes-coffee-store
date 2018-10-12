@@ -54,11 +54,13 @@ a, p, span {
 a {
   color: darken($light-green, 10%);
   transition: color 0.2s ease-out;
+  text-decoration: none;
 }
 
 a:hover,
 a:focus {
   color: saturate($light-green, 15%);
+  text-decoration: none;
 }
 
 main {

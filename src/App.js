@@ -13,10 +13,32 @@ import { mainContent } from './Main/mainContent';
 import Aside from './Aside/AsideContainer';
 import { asideContent } from './Aside/asideContent';
 
-// import Products from './Products'
+// import Products from './Products/Products';
+import ProductsContainer from './Products/ProductsContainer';
+import { productsContent } from './Products/productsContent';
+
+import Filtering from './Filtering/Filtering';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+        products: productsContent,
+        searchfield: ''
+    }
+}
+
+onSearchChange = (e) => {
+  this.setState({ searchfield: e.target.value })
+    console.log(e.target.value);
+    // console.log(products.boxTitle);
+}
+
   render() {
+    const filteredProducts = this.state.products.filter(products => {
+      return products.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
+  });
+  console.log(filteredProducts);
     return (
       <div className="App">
         <Header headerContent = { headerContent } />
@@ -27,7 +49,13 @@ class App extends Component {
             <Aside asideContent = { asideContent }/>
           </div>
           <div className="row">
-            <Products productsContent = { productsContent } />
+          <section className="products">
+            <h1 className="products__title">
+                Coffees
+            </h1>
+            <Filtering searchChange = { this.onSearchChange } />
+            <ProductsContainer productsContent = { filteredProducts } />
+            </section>
           </div>
         </section>
       </div>

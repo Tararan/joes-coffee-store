@@ -18,7 +18,7 @@ class Nav extends React.Component {
             <div>
             <nav id="nav" className="Nav">
                 <div className="container">
-                    <a className={`Nav-hamburger ${this.state.isActive ? "" : "Nav-hamburger--is-open"}`} data-toggle="collapse"
+                    <a href="/Home"className={`Nav-hamburger ${this.state.isActive ? "" : "Nav-hamburger--is-open"}`} data-toggle="collapse"
                     role="button" aria-expanded="false"
                     onClick={this.ToggleHamburger}>
                         <span className="Nav-hamburger-line Nav-hamburger-line--first"></span>
@@ -26,10 +26,10 @@ class Nav extends React.Component {
                         <span className="Nav-hamburger-line Nav-hamburger-line--third"></span>
                     </a>
                     <ul className={`Nav-list ${this.state.isActive ? "" : "Nav-list--is-open"}`}>
-                    {this.props.listItem.map(item => {
+                    {this.props.listItem.map((item, i) => {
                         return (
-                            <li key={`Nav ${item}`} >
-                                <a onClick={this.toggleMenu || this.ToggleHamburger}>
+                            <li key={`Nav ${item}-${i}`} >
+                                <a href="/Home" onClick={this.toggleMenu || this.ToggleHamburger}>
                                     {item}
                                 </a>
                             </li>

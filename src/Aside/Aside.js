@@ -8,14 +8,14 @@ const Aside = ({ figcaption, listNewsTitle, listNews, listHoursTitle, listHours,
                 <figcaption className="sidebar__figure-description">
                     {figcaption}
                 </figcaption>
-                <img className="sidebar__figure-img" src={figure} />
+                <img className="sidebar__figure-img" src={figure} alt="coffe-of-the-month" />
             </figure>
             <div className="clearfix">
                 <ul className="sidebar__list sidebar__list--news">
                 <li> {listNewsTitle} </li>
                     {listNews.map((item, i) => (
                         <li key={`aside-listNews-${item}${i}`}>
-                        <a href="#">
+                        <a href="/home">
                             {item}
                         </a>
                         </li>
