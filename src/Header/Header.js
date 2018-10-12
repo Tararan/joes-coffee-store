@@ -15,7 +15,7 @@ return (
                 <source src={`${videowebm}`} type="video/webm"/>
                 Your browser does not support the video tag. I suggest you upgrade your browser.
             </video>
-            <div className="header__poster hidden">
+            <div className="header__poster">
                 <img src={`${videoposter}`} alt="coffee-beans"/>
             </div>
         </div>

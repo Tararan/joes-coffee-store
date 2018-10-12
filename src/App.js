@@ -21,13 +21,13 @@ class App extends Component {
       <div className="App">
         <Header headerContent = { headerContent } />
         <Nav navContent = { navContent } />
-        <section className="container" id="content">
+        <section className="container section" id="content">
           <div className="row">
             <Main mainContent = { mainContent } />
             <Aside asideContent = { asideContent }/>
           </div>
           <div className="row">
-            {/* <Products productsContent = { productsContent } /> */}
+            <Products productsContent = { productsContent } />
           </div>
         </section>
       </div>

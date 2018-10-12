@@ -7,5 +7,8 @@ const Products = ({  }) => {
                 {productsTitle}
             </h1>
         </div>
+
     )
 }
+
+export default Products;
