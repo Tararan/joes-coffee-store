@@ -28,16 +28,18 @@ class App extends Component {
     }
 }
 
-onSearchChange = (e) => {
-  this.setState({ searchfield: e.target.value })
-    console.log(e.target.value);
-    // console.log(products.boxTitle);
+searchOnClick = () => {
+    const search = document.getElementById('search');
+    this.setState({ searchfield: search.value })
+    console.log(search.value);
+    console.log(search.value.keyCode());
 }
 
   render() {
     const filteredProducts = this.state.products.filter(products => {
       return products.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
   });
+
   console.log(filteredProducts);
     return (
       <div className="App">
@@ -53,7 +55,7 @@ onSearchChange = (e) => {
             <h1 className="products__title">
                 Coffees
             </h1>
-            <Filtering searchChange = { this.onSearchChange } />
+            <Filtering search = { this.searchOnClick }/>
             <ProductsContainer productsContent = { filteredProducts } />
             </section>
           </div>

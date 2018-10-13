@@ -1,10 +1,7 @@
 import React from "react";
 import Products from "./Products";
-// import { productsContent } from "./productsContent";
 
 const ProductsContainer = ({ productsContent }) => {
-// export default class ProductsContainer extends Component {
-//     render() {
     return (
       <section className="col-md-10">
         {productsContent.map((user, i) => {
@@ -21,8 +18,6 @@ const ProductsContainer = ({ productsContent }) => {
         })}
       </section>
     );
-//   }
-// }
     };
 
     export default ProductsContainer;
