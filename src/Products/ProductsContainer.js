@@ -13,6 +13,9 @@ const ProductsContainer = ({ productsContent }) => {
               boxTitle={user.boxTitle}
               boxPrice={user.boxPrice}
               boxButton={user.boxButton}
+              discountPrice={user.discountPrice}
+              bestSeller={user.bestSeller}
+              available={user.available}
             />
           );
         })}

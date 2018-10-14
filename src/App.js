@@ -13,7 +13,6 @@ import { mainContent } from './Main/mainContent';
 import Aside from './Aside/AsideContainer';
 import { asideContent } from './Aside/asideContent';
 
-// import Products from './Products/Products';
 import ProductsContainer from './Products/ProductsContainer';
 import { productsContent } from './Products/productsContent';
 
@@ -25,22 +24,42 @@ class App extends Component {
     this.state = {
         products: productsContent,
         searchfield: ''
-    }
+    };
+}
+
+onFilterChange = (e) => {
+  console.log(e.target.checked);
+  {productsContent.map((product) => {
+  if(e.target.checked === product.bestSeller ) {
+    // return product;
+  }
+})}
+}
+
+onSearchChange = (e) => {
+  if (e.key === 'Enter') {
+    this.setState({ searchfield: e.target.value });
+  }
 }
 
 searchOnClick = () => {
     const search = document.getElementById('search');
-    this.setState({ searchfield: search.value })
-    console.log(search.value);
-    console.log(search.value.keyCode());
+    this.setState({ searchfield: search.value });
 }
 
   render() {
-    const filteredProducts = this.state.products.filter(products => {
-      return products.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
+    let filteredProducts = this.state.products.filter(products => {
+      const bestsellers = document.getElementById('bestsellers');
+      if (products.bestSeller === true) {
+        console.log('products.bestSeller: ' + products.bestSeller + ' bestsellers: ' + bestsellers);
+        return products;
+      } 
+      if (products.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase())) {
+
+        return products;
+      } 
   });
 
-  console.log(filteredProducts);
     return (
       <div className="App">
         <Header headerContent = { headerContent } />
@@ -55,7 +74,11 @@ searchOnClick = () => {
             <h1 className="products__title">
                 Coffees
             </h1>
-            <Filtering search = { this.searchOnClick }/>
+            <Filtering 
+            search = { this.searchOnClick } 
+            searchChange = { this.onSearchChange } 
+            handleFilter = {this.onFilterChange}
+            />
             <ProductsContainer productsContent = { filteredProducts } />
             </section>
           </div>
