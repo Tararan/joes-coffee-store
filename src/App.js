@@ -25,15 +25,27 @@ class App extends Component {
         products: productsContent,
         searchfield: ''
     };
+   
 }
 
 onFilterChange = (e) => {
-  console.log(e.target.checked);
-  {productsContent.map((product) => {
-  if(e.target.checked === product.bestSeller ) {
-    // return product;
-  }
-})}
+  this.setState({ checked: !this.state.isActive })
+  let bestsellerProduct = [];
+  bestsellerProduct.push(productsContent) ;
+  console.log(bestsellerProduct);
+  console.log(productsContent);
+/*   if(e.target.checked === true) {
+    console.log('checked');
+    {
+      productsContent.map((product, i) => {
+        if(product.bestSeller ) {
+          bestsellerProduct.push(product);
+          console.log(bestsellerProduct);
+          return bestsellerProduct;
+        } 
+      })
+    }
+  } */
 }
 
 onSearchChange = (e) => {
@@ -48,14 +60,8 @@ searchOnClick = () => {
 }
 
   render() {
-    let filteredProducts = this.state.products.filter(products => {
-      const bestsellers = document.getElementById('bestsellers');
-      if (products.bestSeller === true) {
-        console.log('products.bestSeller: ' + products.bestSeller + ' bestsellers: ' + bestsellers);
-        return products;
-      } 
+    const filteredProducts = this.state.products.filter(products => {
       if (products.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase())) {
-
         return products;
       } 
   });
@@ -77,9 +83,9 @@ searchOnClick = () => {
             <Filtering 
             search = { this.searchOnClick } 
             searchChange = { this.onSearchChange } 
-            handleFilter = {this.onFilterChange}
+            filterChange = { this.onFilterChange }
             />
-            <ProductsContainer productsContent = { filteredProducts } />
+            <ProductsContainer productsContent = { filteredProducts }  />
             </section>
           </div>
         </section>
