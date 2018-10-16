@@ -25,33 +25,49 @@ class App extends Component {
         products: productsContent,
         searchfield: ''
     };
-   
+    // const isBestseller = this.props.isBestseller;
 }
 
 onFilterChange = (e) => {
+  // let availabeN = 0;
   this.setState({ checked: !this.state.isActive })
   let bestsellerProduct = [];
-  bestsellerProduct.push(productsContent) ;
+  {productsContent.forEach((i) => {
+    bestsellerProduct.push(productsContent[i]);
+  })}
+  // bestsellerProduct.push(productsContent);
+/*   console.log('bestsellerProduct');
   console.log(bestsellerProduct);
-  console.log(productsContent);
-/*   if(e.target.checked === true) {
-    console.log('checked');
-    {
-      productsContent.map((product, i) => {
-        if(product.bestSeller ) {
-          bestsellerProduct.push(product);
-          console.log(bestsellerProduct);
-          return bestsellerProduct;
+  console.log('productsContent');
+  console.log(productsContent); */
+  if(e.target.checked) {
+    console.log(e.target.checked);
+    {productsContent.map((product, i) => {
+        if(product.bestSeller === false) {
+          // console.log(product.bestSeller);
+          // availabeN = availabeN + 1;
+          console.log('productsContent');
+          // console.log(product);
+          productsContent.splice(i,1);
+          // console.log(availabeN);
+          // console.log(i);
         } 
-      })
+      })}
+    } else {
+      console.log(e.target.checked);
+      console.log(productsContent.length);
+      // {productsContent.map((product,i) => {
+        {bestsellerProduct.forEach((i) => {
+          productsContent.push(bestsellerProduct[i]);
+        })}
+      // })}
     }
-  } */
 }
 
 onSearchChange = (e) => {
   if (e.key === 'Enter') {
     this.setState({ searchfield: e.target.value });
-  }
+  }     
 }
 
 searchOnClick = () => {
@@ -63,7 +79,7 @@ searchOnClick = () => {
     const filteredProducts = this.state.products.filter(products => {
       if (products.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase())) {
         return products;
-      } 
+      }
   });
 
     return (

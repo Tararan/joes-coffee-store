@@ -14,7 +14,7 @@ export const productsContent = [
     boxPrice: '€10', 
     boxButton: 'Add to cart',
     discountPrice: '',
-    bestSeller: false,
+    bestSeller: true,
     available: true
   },
   {
@@ -28,7 +28,7 @@ export const productsContent = [
   },
   {
     boxImage: 'https://i.imgur.com/Xsgxmz7.png', 
-    boxTitle: 'Robusta', 
+    boxTitle: 'Robusta-1', 
     boxPrice: '€25', 
     boxButton: 'Add to cart',
     discountPrice: '',
@@ -50,7 +50,7 @@ export const productsContent = [
     boxPrice: '€10', 
     boxButton: 'Add to cart',
     discountPrice: '',
-    bestSeller: false,
+    bestSeller: true,
     available: true
   },
   {
@@ -64,7 +64,7 @@ export const productsContent = [
   },
   {
     boxImage: 'https://i.imgur.com/Xsgxmz7.png', 
-    boxTitle: 'Robusta', 
+    boxTitle: 'Robusta-2', 
     boxPrice: '€25', 
     boxButton: 'Add to cart',
     discountPrice: '',
