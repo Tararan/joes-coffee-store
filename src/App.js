@@ -23,51 +23,25 @@ class App extends Component {
     super();
     this.state = {
         products: productsContent,
-        searchfield: ''
+        searchfield: '',
+        isActive: ''
     };
-    // const isBestseller = this.props.isBestseller;
 }
 
-onFilterChange = (e) => {
-  // let availabeN = 0;
-  this.setState({ checked: !this.state.isActive })
-  let bestsellerProduct = [];
-  {productsContent.forEach((i) => {
-    bestsellerProduct.push(productsContent[i]);
-  })}
-  // bestsellerProduct.push(productsContent);
-/*   console.log('bestsellerProduct');
-  console.log(bestsellerProduct);
-  console.log('productsContent');
-  console.log(productsContent); */
-  if(e.target.checked) {
-    console.log(e.target.checked);
-    {productsContent.map((product, i) => {
-        if(product.bestSeller === false) {
-          // console.log(product.bestSeller);
-          // availabeN = availabeN + 1;
-          console.log('productsContent');
-          // console.log(product);
-          productsContent.splice(i,1);
-          // console.log(availabeN);
-          // console.log(i);
-        } 
-      })}
-    } else {
-      console.log(e.target.checked);
-      console.log(productsContent.length);
-      // {productsContent.map((product,i) => {
-        {bestsellerProduct.forEach((i) => {
-          productsContent.push(bestsellerProduct[i]);
-        })}
-      // })}
-    }
+/* onFilterChange = (e) => {
+  if(e.target.checked) { this.setState({ isActive: "checked" });};
+  if(!e.target.checked) { this.setState({ isActive: "" });};
+  // console.log(e.target.checked);
+} */
+
+onfilterbestSeller = (e) => {
+  if(e.target.defaultChecked) { this.setState({ isActive: "filterbestSeller" });};
+  if(!e.target.defaultChecked) { this.setState({ isActive: "" });};
+  console.log(e.target.defaultChecked);
 }
 
 onSearchChange = (e) => {
-  if (e.key === 'Enter') {
-    this.setState({ searchfield: e.target.value });
-  }     
+  if (e.key === 'Enter') { this.setState({ searchfield: e.target.value }); }     
 }
 
 searchOnClick = () => {
@@ -76,10 +50,24 @@ searchOnClick = () => {
 }
 
   render() {
-    const filteredProducts = this.state.products.filter(products => {
-      if (products.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase())) {
-        return products;
-      }
+/*   const bestSeller = document.getElementById('bestSeller');
+  if(bestSeller.checked === null) {
+    return;
+    console.log('Null');
+    return;
+  } */
+  // console.log(bestSeller.checked);
+  console.log(this.state.isActive);
+    const filteredProducts = this.state.products.filter(item => {
+      const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
+      if (searchedItem && !this.state.isActive && searchedItem) {
+        return item;
+      } 
+      if((this.state.isActive && searchedItem && !item.bestSeller)) {
+        console.log(item);
+        console.log(this.state.isActive);
+        return item;
+      } 
   });
 
     return (
@@ -98,8 +86,10 @@ searchOnClick = () => {
             </h1>
             <Filtering 
             search = { this.searchOnClick } 
-            searchChange = { this.onSearchChange } 
-            filterChange = { this.onFilterChange }
+            searchChange = { this.onSearchChange }
+            filterbestSeller = { this.onfilterbestSeller }
+            filterdiscountPrice = { this.onfilterdiscountPrice }
+            filteravailable = { this.onfilteravailable }
             />
             <ProductsContainer productsContent = { filteredProducts }  />
             </section>
