@@ -24,20 +24,24 @@ class App extends Component {
     this.state = {
         products: productsContent,
         searchfield: '',
-        isActive: ''
+        isfilterbestSeller: false,
+        isfilterdiscountPrice: false,
+        isfilteravailable: false
     };
 }
 
-/* onFilterChange = (e) => {
-  if(e.target.checked) { this.setState({ isActive: "checked" });};
-  if(!e.target.checked) { this.setState({ isActive: "" });};
-  // console.log(e.target.checked);
-} */
+onfilterbestSeller = () => {
+  this.setState({ isfilterbestSeller: !this.state.isfilterbestSeller });
+}
+onfilterdiscountPrice = () => {
+  this.setState({ isfilterdiscountPrice: !this.state.isfilterdiscountPrice });
+}
+onfilteravailable= () => {
+  this.setState({ isfilteravailable: !this.state.isfilteravailable});
+}
 
-onfilterbestSeller = (e) => {
-  if(e.target.defaultChecked) { this.setState({ isActive: "filterbestSeller" });};
-  if(!e.target.defaultChecked) { this.setState({ isActive: "" });};
-  console.log(e.target.defaultChecked);
+onfilterbestSeller = () => {
+  this.setState({ isfilterbestSeller: !this.state.isfilterbestSeller });
 }
 
 onSearchChange = (e) => {
@@ -50,25 +54,54 @@ searchOnClick = () => {
 }
 
   render() {
-/*   const bestSeller = document.getElementById('bestSeller');
-  if(bestSeller.checked === null) {
-    return;
-    console.log('Null');
-    return;
-  } */
-  // console.log(bestSeller.checked);
-  console.log(this.state.isActive);
     const filteredProducts = this.state.products.filter(item => {
+      if(this.state.isfilterdiscountPrice) {
+        console.log('discounts');
       const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
-      if (searchedItem && !this.state.isActive && searchedItem) {
+      if((searchedItem && this.state.isfilterdiscountPrice && item.discountPrice.length)
+      || (searchedItem && !this.state.isfilterdiscountPrice)
+        ){
+        return item;
+      }
+    }
+/*       if(this.state.isfilterbestSeller) {
+        console.log('bestseller');
+      const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
+      if((searchedItem && this.state.isfilterbestSeller && item.bestSeller)
+      || (searchedItem && !this.state.isfilterbestSeller)
+      ){
         return item;
       } 
-      if((this.state.isActive && searchedItem && !item.bestSeller)) {
-        console.log(item);
-        console.log(this.state.isActive);
+    } */
+
+/*     if(this.state.isfilterdiscountPrice) {
+      console.log('discounts');
+    const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
+    if((searchedItem && this.state.isfilterdiscountPrice && item.discountPrice.length)
+    || (searchedItem && !this.state.isfilterdiscountPrice)
+      ){
+      return item;
+    }
+  } */
+  });
+
+/*     const filteredProductsBestSeller = this.state.products.filter(item => {
+      const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
+      if((searchedItem && this.state.isfilterbestSeller && item.bestSeller)
+      || (searchedItem && !this.state.isfilterbestSeller)
+      ){
         return item;
       } 
   });
+  const filteredProductsDiscountPrice = this.state.products.filter(item => {
+    const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
+    if((searchedItem && this.state.isfilterdiscountPrice && item.discountPrice.length)
+    || (searchedItem && !this.state.isfilterdiscountPrice)
+      ) {
+      console.log(item.discountPrice.length);
+      return item;
+    }
+  }); */
 
     return (
       <div className="App">
@@ -91,7 +124,11 @@ searchOnClick = () => {
             filterdiscountPrice = { this.onfilterdiscountPrice }
             filteravailable = { this.onfilteravailable }
             />
-            <ProductsContainer productsContent = { filteredProducts }  />
+            <ProductsContainer 
+            productsContent = { filteredProducts }  
+            // productsContent = { filteredProductsDiscountPrice }  
+            // productsContent = { filteredProductsBestSeller }  
+            />
             </section>
           </div>
         </section>

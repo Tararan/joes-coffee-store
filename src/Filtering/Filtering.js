@@ -12,22 +12,22 @@ return (
     </a>    
     <div className="filtering__checkbox">
         <input name="bestSeller" id="bestSeller" type="checkbox"
-        defaultChecked={filterbestSeller} />
+        onChange={filterbestSeller} />
         <label htmlFor="bestSeller"> Bestsellers</label>
     </div>  
     <div className="filtering__checkbox">
         <input name="discountPrice" id="discountPrice" type="checkbox" 
-        defaultChecked={filterdiscountPrice} />
+        onChange={filterdiscountPrice} />
         <label htmlFor="discountPrice"> On Discount</label>
     </div>
     <div className="filtering__checkbox">
         <input name="available" id="available" type="checkbox" 
-        defaultChecked={filteravailable} />
+        onChange={filteravailable} />
         <label htmlFor="available"> Only available </label>
     </div>
     
 {/*        <input name="comingSoon" id="comingSoon" type="checkbox" 
-    defaultChecked={filterChange}
+    onChange={filterChange}
     />
     <label htmlFor="comingSoon"> Coming Soon </label> */}
 </section>
