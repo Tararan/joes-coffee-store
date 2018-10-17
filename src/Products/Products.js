@@ -1,10 +1,19 @@
 import React from 'react';
-// import boxImage from '../images/coffee/coffee1.jpg'
+// import {boxImage, boxTitle, boxPrice, boxButton} from './productsContent';
 
-const Products = ({boxImage, boxTitle, boxPrice, boxButton }) => {
+const Products = ({boxImage, boxTitle, boxPrice, boxButton, discountPrice, bestSeller, available }) => {
+// export default class Products extends Component {
+/*     constructor() {
+        super();
+        this.state = {
+            isActive: true
+        };
+    } */
+
+// render () {
 return (
     <div className="col-md-4">
-    <article className="products__box">
+    <article className={`products__box`}>
         <img className="products__box-img" src={boxImage} alt="product"/>
         <h2 className="products__box-title">
             {boxTitle}
@@ -18,6 +27,8 @@ return (
     </article>
     </div>
 );
+// }
+// }
 }
 
 export default Products;

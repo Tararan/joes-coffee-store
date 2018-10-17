@@ -55,53 +55,40 @@ searchOnClick = () => {
 
   render() {
     const filteredProducts = this.state.products.filter(item => {
-      if(this.state.isfilterdiscountPrice) {
-        console.log('discounts');
+      if(!this.state.isfilterdiscountPrice && !this.state.isfilterbestSeller && !this.state.isfilteravailable) {
       const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
-      if((searchedItem && this.state.isfilterdiscountPrice && item.discountPrice.length)
-      || (searchedItem && !this.state.isfilterdiscountPrice)
+      if((searchedItem )
+      // || (searchedItem && !this.state.isfilterdiscountPrice)
         ){
         return item;
       }
     }
-/*       if(this.state.isfilterbestSeller) {
-        console.log('bestseller');
+    // const filteringCondition = ()
+      if(this.state.isfilterdiscountPrice) {
+        const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
+        if((searchedItem && this.state.isfilterdiscountPrice && item.discountPrice.length)
+        || (searchedItem && !this.state.isfilterdiscountPrice)
+          ){
+          return item;
+        }
+    }
+      if(this.state.isfilterbestSeller) {
       const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
       if((searchedItem && this.state.isfilterbestSeller && item.bestSeller)
       || (searchedItem && !this.state.isfilterbestSeller)
       ){
         return item;
       } 
-    } */
-
-/*     if(this.state.isfilterdiscountPrice) {
-      console.log('discounts');
-    const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
-    if((searchedItem && this.state.isfilterdiscountPrice && item.discountPrice.length)
-    || (searchedItem && !this.state.isfilterdiscountPrice)
-      ){
-      return item;
     }
-  } */
-  });
-
-/*     const filteredProductsBestSeller = this.state.products.filter(item => {
+      if(this.state.isfilteravailable) {
       const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
-      if((searchedItem && this.state.isfilterbestSeller && item.bestSeller)
-      || (searchedItem && !this.state.isfilterbestSeller)
+      if((searchedItem && this.state.isfilteravailable && item.available)
+      || (searchedItem && !this.state.isfilteravailable)
       ){
         return item;
       } 
-  });
-  const filteredProductsDiscountPrice = this.state.products.filter(item => {
-    const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
-    if((searchedItem && this.state.isfilterdiscountPrice && item.discountPrice.length)
-    || (searchedItem && !this.state.isfilterdiscountPrice)
-      ) {
-      console.log(item.discountPrice.length);
-      return item;
     }
-  }); */
+  });
 
     return (
       <div className="App">
@@ -125,9 +112,7 @@ searchOnClick = () => {
             filteravailable = { this.onfilteravailable }
             />
             <ProductsContainer 
-            productsContent = { filteredProducts }  
-            // productsContent = { filteredProductsDiscountPrice }  
-            // productsContent = { filteredProductsBestSeller }  
+            productsContent = { filteredProducts }
             />
             </section>
           </div>

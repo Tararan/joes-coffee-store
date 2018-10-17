@@ -6,7 +6,7 @@ export const productsContent = [
     boxButton: 'Add to cart',
     discountPrice: '€9.99',
     bestSeller: false,
-    available: true
+    available: false
   },
   {
     boxImage: 'https://i.imgur.com/K1dfYl4.png', 
