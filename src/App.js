@@ -14,7 +14,6 @@ import Aside from './Aside/AsideContainer';
 import { asideContent } from './Aside/asideContent';
 
 import ProductsContainer from './Products/ProductsContainer';
-// import Products from './Products/Products';
 import { productsContent } from './Products/productsContent';
 
 import Filtering from './Filtering/Filtering';
@@ -31,10 +30,8 @@ class App extends Component {
     };
 }
 
-onfilterbestSeller = (e) => {
+onfilterbestSeller = () => {
   this.setState({ isfilterbestSeller: !this.state.isfilterbestSeller });
-  // e.target.prop('checked', true);
-  console.log(e.target.id);
 }
 onfilterdiscountPrice = () => {
   this.setState({ isfilterdiscountPrice: !this.state.isfilterdiscountPrice });
@@ -59,47 +56,36 @@ searchOnClick = () => {
   render() {
     const filteredProducts = this.state.products.filter(item => {
       const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
-      if(!this.state.isfilterdiscountPrice && !this.state.isfilterbestSeller && !this.state.isfilteravailable){
+  /*     if(!this.state.isfilterdiscountPrice && !this.state.isfilterbestSeller && !this.state.isfilteravailable){
         if((searchedItem)){
           return item;
         }
-      }
+      } */
       /* 
         Individual filters
       */
+    
       if(this.state.isfilterbestSeller) {
-        if((searchedItem && this.state.isfilterbestSeller && item.bestSeller)
-        || (searchedItem && !this.state.isfilterbestSeller)
-        ){
+        if(searchedItem && item.bestSeller){
           return item;
         } 
       }
-
       if(this.state.isfilterdiscountPrice) {
-        if((searchedItem && this.state.isfilterdiscountPrice && item.discountPrice.length)
-        || (searchedItem && !this.state.isfilterdiscountPrice)
-          ){
+        if(searchedItem && item.discountPrice.length){
           return item;
         }
-    }
-      if(this.state.isfilteravailable) {
-      if((searchedItem && this.state.isfilteravailable && item.available)
-      || (searchedItem && !this.state.isfilteravailable)
-      ){
-        return item;
-      } 
-    }
-    /* 
-    isfilterbestSeller && isfilterdiscountPrice
-    */
-  /*   if(this.state.isfilterbestSeller && this.state.isfilterdiscountPrice ) {
-      if((searchedItem && item.bestSeller && item.discountPrice.length)
-      || (searchedItem && !this.state.isfilterbestSeller)
-      ){
-        return item;
       }
-    } */
-
+      if(this.state.isfilteravailable && !this.state.isfilterdiscountPrice && !this.state.isfilterdiscountPrice) {
+        if(searchedItem && item.available){
+          return item;
+        }
+      }
+      if(this.state.isfilteravailable && this.state.isfilterdiscountPrice && !this.state.isfilterdiscountPrice) {;
+        if(searchedItem && item.available && item.discountPrice.length){ 
+          console.log('Yup')
+          return item;
+        }
+      }
   });
   
     return (

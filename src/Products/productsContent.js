@@ -13,7 +13,7 @@ export const productsContent = [
     boxPrice: '€10', 
     discountPrice: '',
     bestSeller: true,
-    available: true
+    available: false
   },
   {
     boxImage: 'https://i.imgur.com/tcWrCoO.png', 
