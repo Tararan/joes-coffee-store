@@ -1,34 +1,36 @@
-import React from 'react';
-// import {boxImage, boxTitle, boxPrice, boxButton} from './productsContent';
+import React, { Component } from "react";
 
-const Products = ({boxImage, boxTitle, boxPrice, boxButton, discountPrice, bestSeller, available }) => {
-// export default class Products extends Component {
-/*     constructor() {
-        super();
-        this.state = {
-            isActive: true
-        };
-    } */
+class Products extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isActive: true
+    };
+  }
 
-// render () {
-return (
-    <div className="col-md-4">
-    <article className={`products__box`}>
-        <img className="products__box-img" src={boxImage} alt="product"/>
-        <h2 className="products__box-title">
-            {boxTitle}
-        </h2>
-        <p className="products__box-price">
-            {boxPrice}
-        </p>
-        <a href="/Home" className="button button--product-box" role="button">
-            {boxButton}
-        </a>
-    </article>
-    </div>
-);
-// }
-// }
+  render() {
+    const { boxImage, boxTitle, boxPrice, discountPrice, bestSeller, available } = this.props;
+    return (
+      <div className="col-md-4">
+        <article className={ `products__box 
+                            ${discountPrice.length ? 'products__box--discount' : ''}
+                            ${bestSeller ? 'products__box--best-seller' : ''} 
+                            ${available ? '' : 'products__box--unavailable'} ` }>
+          <div className="products__box-img-wrapper">
+            <img className="products__box-img" src={boxImage} alt="product" />
+          </div>
+          <h2 className="products__box-title">{boxTitle}</h2>
+          <p className="products__box-price"><span className="products__box-price-regular">{boxPrice}</span> <span className="products__box-price-discount">{discountPrice}</span></p>
+          <div className='button__wrapper'>
+            <a href="/Home" className={`button ${available ? 'button--product-box' : 'button--unavailable'}`} role="button">
+                {available ? 'Add to cart' : 'Unavailable'}
+            </a>
+          </div>
+        </article>
+      </div>
+    );
+  }
 }
 
 export default Products;
+ 

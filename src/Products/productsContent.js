@@ -1,9 +1,8 @@
 export const productsContent = [
   {
     boxImage: 'https://i.imgur.com/dn9ty6l.png', 
-    boxTitle: 'Arabusta', 
+    boxTitle: 'Arabusta Arabica', 
     boxPrice: '€15', 
-    boxButton: 'Add to cart',
     discountPrice: '€9.99',
     bestSeller: false,
     available: false
@@ -12,7 +11,6 @@ export const productsContent = [
     boxImage: 'https://i.imgur.com/K1dfYl4.png', 
     boxTitle: 'Arusha', 
     boxPrice: '€10', 
-    boxButton: 'Add to cart',
     discountPrice: '',
     bestSeller: true,
     available: true
@@ -21,7 +19,6 @@ export const productsContent = [
     boxImage: 'https://i.imgur.com/tcWrCoO.png', 
     boxTitle: 'Typica', 
     boxPrice: '€20', 
-    boxButton: 'Add to cart',
     discountPrice: '€14.99',
     bestSeller: false,
     available: true
@@ -30,7 +27,6 @@ export const productsContent = [
     boxImage: 'https://i.imgur.com/Xsgxmz7.png', 
     boxTitle: 'Robusta-1', 
     boxPrice: '€25', 
-    boxButton: 'Add to cart',
     discountPrice: '',
     bestSeller: true,
     available: true
@@ -39,7 +35,6 @@ export const productsContent = [
     boxImage: 'https://i.imgur.com/dn9ty6l.png', 
     boxTitle: 'Arabusta', 
     boxPrice: '€15', 
-    boxButton: 'Add to cart',
     discountPrice: '€9.99',
     bestSeller: false,
     available: true
@@ -48,7 +43,6 @@ export const productsContent = [
     boxImage: 'https://i.imgur.com/K1dfYl4.png', 
     boxTitle: 'Arusha', 
     boxPrice: '€10', 
-    boxButton: 'Add to cart',
     discountPrice: '',
     bestSeller: true,
     available: true
@@ -57,7 +51,6 @@ export const productsContent = [
     boxImage: 'https://i.imgur.com/tcWrCoO.png', 
     boxTitle: 'Typica', 
     boxPrice: '€20', 
-    boxButton: 'Add to cart',
     discountPrice: '€14.99',
     bestSeller: false,
     available: true
@@ -66,7 +59,6 @@ export const productsContent = [
     boxImage: 'https://i.imgur.com/Xsgxmz7.png', 
     boxTitle: 'Robusta-2', 
     boxPrice: '€25', 
-    boxButton: 'Add to cart',
     discountPrice: '',
     bestSeller: true,
     available: true
@@ -75,7 +67,6 @@ export const productsContent = [
     boxImage: 'https://i.imgur.com/Awc1PsW.png', 
     boxTitle: 'Colombia and Caturra', 
     boxPrice: '€25', 
-    boxButton: 'Add to cart',
     discountPrice: '',
     bestSeller: false,
     available: false

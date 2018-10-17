@@ -14,6 +14,7 @@ import Aside from './Aside/AsideContainer';
 import { asideContent } from './Aside/asideContent';
 
 import ProductsContainer from './Products/ProductsContainer';
+// import Products from './Products/Products';
 import { productsContent } from './Products/productsContent';
 
 import Filtering from './Filtering/Filtering';
@@ -30,8 +31,10 @@ class App extends Component {
     };
 }
 
-onfilterbestSeller = () => {
+onfilterbestSeller = (e) => {
   this.setState({ isfilterbestSeller: !this.state.isfilterbestSeller });
+  // e.target.prop('checked', true);
+  console.log(e.target.id);
 }
 onfilterdiscountPrice = () => {
   this.setState({ isfilterdiscountPrice: !this.state.isfilterdiscountPrice });
@@ -55,41 +58,50 @@ searchOnClick = () => {
 
   render() {
     const filteredProducts = this.state.products.filter(item => {
-      if(!this.state.isfilterdiscountPrice && !this.state.isfilterbestSeller && !this.state.isfilteravailable) {
       const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
-      if((searchedItem )
-      // || (searchedItem && !this.state.isfilterdiscountPrice)
-        ){
-        return item;
+      if(!this.state.isfilterdiscountPrice && !this.state.isfilterbestSeller && !this.state.isfilteravailable){
+        if((searchedItem)){
+          return item;
+        }
       }
-    }
-    // const filteringCondition = ()
+      /* 
+        Individual filters
+      */
+      if(this.state.isfilterbestSeller) {
+        if((searchedItem && this.state.isfilterbestSeller && item.bestSeller)
+        || (searchedItem && !this.state.isfilterbestSeller)
+        ){
+          return item;
+        } 
+      }
+
       if(this.state.isfilterdiscountPrice) {
-        const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
         if((searchedItem && this.state.isfilterdiscountPrice && item.discountPrice.length)
         || (searchedItem && !this.state.isfilterdiscountPrice)
           ){
           return item;
         }
     }
-      if(this.state.isfilterbestSeller) {
-      const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
-      if((searchedItem && this.state.isfilterbestSeller && item.bestSeller)
-      || (searchedItem && !this.state.isfilterbestSeller)
-      ){
-        return item;
-      } 
-    }
       if(this.state.isfilteravailable) {
-      const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
       if((searchedItem && this.state.isfilteravailable && item.available)
       || (searchedItem && !this.state.isfilteravailable)
       ){
         return item;
       } 
     }
-  });
+    /* 
+    isfilterbestSeller && isfilterdiscountPrice
+    */
+  /*   if(this.state.isfilterbestSeller && this.state.isfilterdiscountPrice ) {
+      if((searchedItem && item.bestSeller && item.discountPrice.length)
+      || (searchedItem && !this.state.isfilterbestSeller)
+      ){
+        return item;
+      }
+    } */
 
+  });
+  
     return (
       <div className="App">
         <Header headerContent = { headerContent } />
@@ -105,14 +117,15 @@ searchOnClick = () => {
                 Coffees
             </h1>
             <Filtering 
-            search = { this.searchOnClick } 
-            searchChange = { this.onSearchChange }
-            filterbestSeller = { this.onfilterbestSeller }
-            filterdiscountPrice = { this.onfilterdiscountPrice }
-            filteravailable = { this.onfilteravailable }
+              search = { this.searchOnClick } 
+              searchChange = { this.onSearchChange }
+              filterAll= { this.onfilterAll }
+              filterbestSeller = { this.onfilterbestSeller }
+              filterdiscountPrice = { this.onfilterdiscountPrice }
+              filteravailable = { this.onfilteravailable }
             />
             <ProductsContainer 
-            productsContent = { filteredProducts }
+              productsContent = { filteredProducts }
             />
             </section>
           </div>

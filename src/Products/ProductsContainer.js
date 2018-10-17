@@ -12,7 +12,6 @@ const ProductsContainer = ({ productsContent }) => {
               boxImage={user.boxImage.replace(/\s/g, "")}
               boxTitle={user.boxTitle}
               boxPrice={user.boxPrice}
-              boxButton={user.boxButton}
               discountPrice={user.discountPrice}
               bestSeller={user.bestSeller}
               available={user.available}
