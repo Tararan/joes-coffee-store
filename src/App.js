@@ -61,11 +61,11 @@ searchOnClick = () => {
         Individual filters
       */
       if(this.state.isfilteravailable) {
-        if(!this.state.isfilterbestSeller && !this.state.isfilterdiscountPrice && this.state.isfilteravailable) {
-          if(searchedItem && item.available){
+          if(!this.state.isfilterbestSeller && !this.state.isfilterdiscountPrice) {
+            if(searchedItem && item.available){
               return item;
+            }
           }
-        }
           if(this.state.isfilterbestSeller && this.state.isfilteravailable) {
             if(searchedItem && item.bestSeller && item.available && this.state.isfilteravailable){
               return item;
@@ -89,19 +89,6 @@ searchOnClick = () => {
             }
           }
       }
-/*       if(this.state.isfilteravailable) {
-        if(searchedItem && item.available){
-          return item;
-        }
-      } */
-
-
-/*       if(this.state.isfilteravailable && this.state.isfilterdiscountPrice && !this.state.isfilterdiscountPrice) {;
-        if(searchedItem && item.available && item.discountPrice.length){ 
-          console.log('Yup')
-          return item;
-        }
-      } */
   });
   
     return (

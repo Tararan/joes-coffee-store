@@ -5,6 +5,7 @@
     @include headings;
     @include styling;
     font-size: $m-font;
+    margin-bottom:50px;
   }
 
   &__box {

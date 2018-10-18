@@ -12,7 +12,6 @@ class Filtering extends Component {
     const {
       search,
       searchChange,
-      filterAll,
       filterbestSeller,
       filterdiscountPrice,
       filteravailable
@@ -20,6 +19,7 @@ class Filtering extends Component {
     return (
       <section className="col-md-2 ">
         <div className="Filtering">
+        <div className="Filtering__search-wrapper">
           <input
             id="search"
             type="search"
@@ -27,10 +27,11 @@ class Filtering extends Component {
             placeholder="Search Coffees"
             onKeyPress={searchChange}
           />
+          </div>
           <a onClick={search} className="button button--search">
             Search
           </a>
-          <div className="filtering__checkbox">
+          <div className="Filtering__checkbox">
             <input
               name="bestSeller"
               id="bestSeller"
@@ -39,7 +40,7 @@ class Filtering extends Component {
             />
             <label htmlFor="bestSeller"> Bestsellers</label>
           </div>
-          <div className="filtering__checkbox">
+          <div className="Filtering__checkbox">
             <input
               name="discountPrice"
               id="discountPrice"
@@ -48,7 +49,7 @@ class Filtering extends Component {
             />
             <label htmlFor="discountPrice"> On Discount</label>
           </div>
-          <div className="filtering__checkbox">
+          <div className="Filtering__checkbox">
             <input
               name="available"
               id="available"

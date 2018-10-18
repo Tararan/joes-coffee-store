@@ -35,3 +35,9 @@
   100% {transform: rotate(720deg);}
 }
 
+@keyframes checkbox-color {
+  0% { background-color: $light-green; }
+  50% { background-color: $light-brown; }
+  100% { background-color: $light-green; }
+}
+

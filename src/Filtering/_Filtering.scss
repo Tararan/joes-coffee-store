@@ -1,28 +1,103 @@
 .Filtering {
-    margin-left: -15px;
+  margin-left: -15px;
+  //   margin-top: 30px;
+  position: relative;
 
-    @media (max-width: $screen-xs-max) {
-        margin-left: 0;
+  @media (max-width: $screen-xs-max) {
+    margin-left: 0;
+  }
+
+  &__search[type="search"] {
+    &::placeholder {
+      @include headings;
+      font-size: 30px;
     }
+    @include headings;
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
+    border: none;
 
-    &__search[type=search] {
-        &::placeholder  {
-            @include headings;
-            font-size: 30px;
-            }
+    border-bottom: 1px solid $light-brown;
+    width: 100%;
+    padding-right: 20px;
+    margin-bottom: 10px;
+    color: $light-brown;
+    font-size: 30px;
 
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__search-wrapper {
+    position: relative;
+  }
+
+  &__search-wrapper:before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 0;
+    bottom: 20px;
+    z-index: 100;
+    background-image: url("#{$img-path}/assets/magnifier-green.png");
+    transform: scaleX(-1);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+
+    input {
+      display: none;
+    }
+    label {
+      @include headings;
+      font-weight: 100;
+      display: flex;
+      position: relative;
+      padding: 10px 0 10px 30px;
+      margin: 0;
+      transition: 0.25s color;
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: calc(50% - 7px);
+        width: 15px;
+        height: 15px;
+        border: 1px solid $light-brown;
+        border-radius: 4px;
         background-color: transparent;
-        border: none;
+        transition: background-color 0.25s ease-out;
+      }
 
-        border-bottom: 1px solid $light-brown;
-        width: 100%;
-        // padding: 10px  0 0;
-        margin-bottom: 10px;
-        color: $light-brown;
-        @include headings;
-        font-size: 30px;
+      &:hover {
+        color: $dark-brown;
+        cursor: pointer;
+
         &:before {
-
+            background-color: $light-brown;
+            opacity: 0.5;
         }
+      }
     }
+
+    // Checked  state
+    input:checked + label {
+      color: $light-green;
+      transition: 0.25s color;
+    }
+    input:checked + label:before {
+      background-color: $light-green;
+      transition: background-color 0.25s ease-out;
+
+      //   animation: checkbox-color 5s infinite;
+    }
+  }
 }
