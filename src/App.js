@@ -18,6 +18,8 @@ import { productsContent } from './Products/productsContent';
 
 import Filtering from './Filtering/Filtering';
 
+// import Overlay from './Overlay/Overlay';
+
 class App extends Component {
   constructor() {
     super();
@@ -93,6 +95,7 @@ searchOnClick = () => {
   
     return (
       <div className="App">
+        {/* <Overlay productsContent = { productsContent } /> */}
         <Header headerContent = { headerContent } />
         <Nav navContent = { navContent } />
         <section className="container section" id="content">

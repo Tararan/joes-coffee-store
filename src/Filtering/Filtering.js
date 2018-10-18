@@ -49,7 +49,7 @@ class Filtering extends Component {
             />
             <label htmlFor="discountPrice"> On Discount</label>
           </div>
-          <div className="Filtering__checkbox">
+          <div className="Filtering__checkbox Filtering__checkbox--availability">
             <input
               name="available"
               id="available"

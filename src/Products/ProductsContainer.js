@@ -8,6 +8,7 @@ const ProductsContainer = ({ productsContent }) => {
           return (
             <Products
               key={`Products-key-${i}`}
+              id={`Product-id-${i}`}
               productsTitle={user.productsTitle}
               boxImage={user.boxImage.replace(/\s/g, "")}
               boxTitle={user.boxTitle}
@@ -15,6 +16,7 @@ const ProductsContainer = ({ productsContent }) => {
               discountPrice={user.discountPrice}
               bestSeller={user.bestSeller}
               available={user.available}
+              description={user.description}
             />
           );
         })}

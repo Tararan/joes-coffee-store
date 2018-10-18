@@ -48,6 +48,11 @@
     background-size: contain;
   }
 
+  &__checkbox--availability {
+    margin-top: 10px;
+    border-top: 1px solid $light-brown;
+  }
+
   &__checkbox {
     display: flex;
     align-items: center;
@@ -78,7 +83,7 @@
       }
 
       &:hover {
-        color: $dark-brown;
+        opacity: 0.7;
         cursor: pointer;
 
         &:before {
