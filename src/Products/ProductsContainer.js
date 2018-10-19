@@ -1,7 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import Products from "./Products";
 
-const ProductsContainer = ({ productsContent }) => {
+class ProductsContainer extends Component {
+/*   constructor(props) {
+    super(props);
+    this.state = { isOpen: true };
+} */
+  render () {
+    const { ToggleOverlay, productsContent } = this.props;
     return (
       <section className="col-md-10">
         {productsContent.map((user, i) => {
@@ -9,6 +15,7 @@ const ProductsContainer = ({ productsContent }) => {
             <Products
               key={`Products-key-${i}`}
               id={`Product-id-${i}`}
+              ToggleOverlay={ToggleOverlay}
               productsTitle={user.productsTitle}
               boxImage={user.boxImage.replace(/\s/g, "")}
               boxTitle={user.boxTitle}
@@ -21,7 +28,8 @@ const ProductsContainer = ({ productsContent }) => {
           );
         })}
       </section>
-    );
-    };
+    )
+    }
+  }
 
     export default ProductsContainer;

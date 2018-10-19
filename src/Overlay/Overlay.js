@@ -1,4 +1,30 @@
-import React, { Component } from "react";
+/*     const openOverlay = document.getElementsByClassName('products__box');
+    const closeOverlay = document.getElementsByClassName('overlay__close');
+    
+    const overlay = document.getElementsByClassName('overlay');
+    const overlayIsOpen = 'overlay--is-open';
+    const header = document.getElementsByClassName('header');
+    const headerBlur = 'header--is-blurred';
+    const main = document.getElementsByClassName('main');
+    const mainBlur = 'main--is-blurred';
+    const footer = document.getElementsByClassName('footer');
+    const footerBlur = 'footer--is-blurred';
+    const nav = document.getElementsByClassName('header__nav');
+    const navBlur = 'header__nav--is-blurred';
+    const body = document.getElementsByTagName('body');
+    const disableScrolling = 'disable-scrolling';
+
+
+        console.log(overlay.classList.toggle(overlayIsOpen));
+        console.log(body.classList.toggle(disableScrolling));
+        console.log(header.classList.toggle(headerBlur));
+        console.log(main.classList.toggle(mainBlur));
+        console.log(footer.classList.toggle(footerBlur));
+        console.log(nav.classList.toggle(navBlur)); */
+
+
+
+/* import React, { Component } from "react";
 import closeBtn from "../images/assets/close-2.png";
 // import Products from '../Products/Products';
 
@@ -51,4 +77,4 @@ class Overlay extends Component {
     }
 }
 
-// export default Overlay;
+// export default Overlay; */

@@ -33,12 +33,10 @@ class App extends Component {
     };
 }
 
-onToggleOverlay = (e) => {
+/* onToggleOverlay = (e) => {
   this.setState({ isOpen: !this.state.isOpen })
-  console.log('you clicked');
-  console.log(e);
 }
-
+ */
 onfilterbestSeller = () => {
   this.setState({ isfilterbestSeller: !this.state.isfilterbestSeller });
 }
@@ -125,7 +123,7 @@ searchOnClick = () => {
             />
             <ProductsContainer 
               productsContent = { filteredProducts }
-              ToggleOverlay = { this.onToggleOverlay }
+              // ToggleOverlay = { this.onToggleOverlay }
             />
             </section>
           </div>
