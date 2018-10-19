@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 
 class Filtering extends Component {
-  constructor() {
+/*   constructor() {
     super();
     this.state = {
       isActive: true
     };
-  }
+  } */
 
   render() {
     const {

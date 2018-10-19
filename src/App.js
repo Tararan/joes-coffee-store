@@ -24,12 +24,19 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+        // isOpen: true,
         products: productsContent,
         searchfield: '',
         isfilterbestSeller: false,
         isfilterdiscountPrice: false,
         isfilteravailable: false
     };
+}
+
+onToggleOverlay = (e) => {
+  this.setState({ isOpen: !this.state.isOpen })
+  console.log('you clicked');
+  console.log(e);
 }
 
 onfilterbestSeller = () => {
@@ -118,6 +125,7 @@ searchOnClick = () => {
             />
             <ProductsContainer 
               productsContent = { filteredProducts }
+              ToggleOverlay = { this.onToggleOverlay }
             />
             </section>
           </div>

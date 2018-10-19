@@ -7,14 +7,14 @@ constructor(props) {
     this.state = { isOpen: true };
 }
 
-OpenOverlay = () => {
+/* ToggleOverlay = () => {
     this.setState({ isOpen: !this.state.isOpen })
-}
+} */
   render() {
-    const { boxImage, boxTitle, boxPrice, discountPrice, bestSeller, available, description } = this.props;
+    const { boxImage, boxTitle, boxPrice, discountPrice, bestSeller, available, description, ToggleOverlay} = this.props;
     return (
       <div className="col-md-4">
-        <article onClick={this.OpenOverlay} className={ `products__box ${discountPrice.length ? 'products__box--discount' : ''}
+        <article onClick={ToggleOverlay} className={ `products__box ${discountPrice.length ? 'products__box--discount' : ''}
             ${bestSeller ? 'products__box--best-seller' : ''} 
             ${available ? '' : 'products__box--unavailable'} ` }>
           <div className="products__box-img-wrapper">
@@ -29,7 +29,7 @@ OpenOverlay = () => {
           </div>
         </article>
         <section className={`Overlay ${this.state.isOpen ? "" : "Overlay--is-open"}`}>
-            <a className="Overlay__close" type="button">
+            <a onClick={ToggleOverlay} className="Overlay__close" type="button">
                 <img className="Overlay__close-img" src={ closeBtn }/>
             </a>
             <div className="container">
