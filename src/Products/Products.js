@@ -8,9 +8,27 @@ constructor(props) {
 }
 
 ToggleOverlay = () => {
-    this.setState({ isOpen: !this.state.isOpen })
-}
+    this.setState({ isOpen: !this.state.isOpen });
+    const article = document.getElementsByTagName('article');
+    const sidebar = document.getElementsByTagName('aside');
+    const body = document.getElementsByTagName('body')[0];
+    const productsTitle = document.getElementsByClassName('products__title');
+    const nav = document.getElementsByClassName('Nav');
 
+    const blurRepeater = function(element) {
+        for (let i = 0; i < element.length; i++) {
+            element[i].classList.toggle('blur-applied');
+        }
+    }
+
+    blurRepeater(article);
+    blurRepeater(sidebar);
+    blurRepeater(productsTitle);
+    blurRepeater(nav);
+
+    body.classList.toggle('disable-scrolling');
+
+}
   render() {
     const { boxImage, boxTitle, boxPrice, discountPrice, bestSeller, available, description} = this.props;
     return (

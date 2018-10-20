@@ -17,7 +17,7 @@ class Filtering extends Component {
       filteravailable
     } = this.props;
     return (
-      <section className="col-md-2 ">
+      <aside className="col-md-2 ">
         <div className="Filtering">
         <div className="Filtering__search-wrapper">
           <input
@@ -59,7 +59,7 @@ class Filtering extends Component {
             <label htmlFor="available"> Only available </label>
           </div>
         </div>
-      </section>
+      </aside>
     );
   }
 }

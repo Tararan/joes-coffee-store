@@ -13,7 +13,7 @@ body {
 
 .disable-scrolling {
   overflow-y: hidden;
-  padding-right: 17px;
+  // padding-right: 17px;
 
   @media screen and (max-width: $screen-xs-max) {
     overflow: hidden;
@@ -63,12 +63,13 @@ a:focus {
   text-decoration: none;
 }
 
-main {
+ article, aside, .products, .products__title, .Nav {
   filter: blur(0);
   transition: filter 0.7s linear;
 }
 
-.main--is-blurred {
+
+.blur-applied {
   filter: blur(20px);
   transition: filter 0.5s linear;
 }

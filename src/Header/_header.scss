@@ -9,7 +9,7 @@
   &--is-blurred, &__nav--is-blurred {
     filter: blur(20px);
     transition: filter 0.5s linear;
-    z-index: 200;
+    z-index: 10;
   }
 
   &__content {
@@ -22,10 +22,14 @@
 
   &__content-logo {
     max-width: 200px;
+    height: 198px;
     width: 25vw;
-    display: block;
     margin: 4vh auto 0 auto;
-    animation: logo-size 1.5s ease-out, logo-dance 1s 1.5s ease-in infinite;
+    // display: none;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    animation: logo-size 5s ease-out 4s, logo-dance 1s 2.5s ease-in infinite;
+    display: block;
 
     @media screen and (max-height: 414px), screen and (max-width: 327px) {
       display: none;
@@ -38,6 +42,8 @@
     margin-top: 100px;
     display: block;
 
+    animation: fade-in 0.75s ease-out;
+
     @media screen and (max-width: 568px) {
       margin-top: 50px;
     }
@@ -49,6 +55,7 @@
 
   &__content-subtitle {
     @include subtitle;
+    animation: fade-in 0.75s ease-out;
   }
 
   &__filter {

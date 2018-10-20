@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import Products from "./Products";
 
 class ProductsContainer extends Component {
-/*   constructor(props) {
-    super(props);
-    this.state = { isOpen: true };
-} */
   render () {
     const { ToggleOverlay, productsContent } = this.props;
     return (
@@ -14,7 +10,6 @@ class ProductsContainer extends Component {
           return (
             <Products
               key={`Products-key-${i}`}
-              id={`Product-id-${i}`}
               ToggleOverlay={ToggleOverlay}
               productsTitle={user.productsTitle}
               boxImage={user.boxImage.replace(/\s/g, "")}

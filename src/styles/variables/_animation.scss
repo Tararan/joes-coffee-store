@@ -16,7 +16,8 @@
 }
 
 @keyframes logo-size {
-  0%  {transform: scale(0) rotate(0);}
+  0%  {transform: scale(0) rotate(0); display: none;}
+  1%  { display: block; }
   25% {transform: scale(1.3) rotate(390deg);}
   50% {transform: scale(0.9) rotate(320deg);}
   75% {transform: scale(1) rotate(370deg)}
@@ -35,9 +36,7 @@
   100% {transform: rotate(720deg);}
 }
 
-@keyframes checkbox-color {
-  0% { background-color: $light-green; }
-  50% { background-color: $light-brown; }
-  100% { background-color: $light-green; }
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
-
