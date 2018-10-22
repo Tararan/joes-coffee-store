@@ -65,13 +65,17 @@ a:focus {
 
  article, aside, .products, .products__title, .Nav {
   filter: blur(0);
-  transition: filter 0.7s linear;
+  transition: filter 1s linear;
 }
 
+.Nav {
+  filter: blur(0);
+  transition: filter 10s linear 10s;
+}
 
 .blur-applied {
   filter: blur(20px);
-  transition: filter 0.5s linear;
+  transition: filter 1s linear;
 }
 
 .blurred-content__frame {

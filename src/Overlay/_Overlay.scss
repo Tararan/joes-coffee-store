@@ -9,11 +9,13 @@
   left: 0;
   right: 0;
   top: 0;
-  z-index: 10000;
-  opacity: 0.8;
+  z-index: 1500;
+  opacity: 0;
 
+  backface-visibility: hidden;
+  transform: translateZ(0);
   transform: translateY(-200vh);
-  transition: transform 0.75s ease-in;
+  transition: transform 0.75s ease-in, opacity 0.5s;
 
   @media screen and (max-width: $screen-xs-max) {
     height: 200%;
@@ -22,9 +24,12 @@
   &--is-open {
     background-color: rgba(133, 163, 141, 0.5);
     height: 100%;
+    opacity: 0.8;
 
+    backface-visibility: hidden;
+    transform: translateZ(0);
     transform: translateY(0vh);
-    transition: transform 0.75s ease-out;
+    transition: transform 0.75s ease-out, opacity 0.35s 0.4s;
     overflow-y: scroll;
   }
 
@@ -46,21 +51,42 @@
       transform: rotate(1440deg);
       transition: transform 4s ease-in;
     }
-
-    //&:active,
-    //&:focus {
-    //  transform: scale(2);
-    //  transition: transform 2s ease-in;
-    //}
   }
 
-  &__content-img {
-    width: 500px;
+  &__content-img-wrapper {
+    height: 500px;
 
     @media screen and (max-width: $screen-xs-max) {
       width: 100%;
+      height: auto;
+    }
+
+  }
+
+  &__content-img {
+      height: 100%;
+      width: auto;
+  }
+
+  &--best-seller &__content-img-wrapper {
+    position: relative;
+    
+
+    &:before {
+      position: absolute;
+      content: '';
+      width: 80px;
+      height: 100%;
+      top: -40px;
+      right: 50%;
+      transform: rotate(45deg);
+      background-image: url("#{$img-path}/assets/bestseller.png");  
+      background-repeat: no-repeat;
+      background-size: contain;
     }
   }
+
+
 
   &__content-title {
     @include headings;
@@ -103,5 +129,31 @@
       right: -20px;
       border-right: 20px solid transparent;
     }
+  }
+
+  &--discount &__content-price-regular {
+    display: inline-block;
+    text-align: center;
+    opacity: 0.8;
+    width: 50px;
+    position: relative;
+
+    &:before {
+      content:'';
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: calc(50% - 1px);
+      height: 2px;
+      background-color: red;
+      opacity: 0.6;
+    }
+  }
+
+  &--discount  &__content-price-discount {
+    display: inline-block;
+    width: 50px;
+    font-size:  1.2em;
+    font-weight: bold;
   }
 }

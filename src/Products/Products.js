@@ -40,30 +40,37 @@ ToggleOverlay = () => {
             <img className="products__box-img" src={boxImage} alt="product" />
           </div>
           <h2 className="products__box-title">{boxTitle}</h2>
-          <p className="products__box-price"><span className="products__box-price-regular">{boxPrice}</span> <span className="products__box-price-discount">{discountPrice}</span></p>
+          <p className="products__box-price">
+          <span className="products__box-price-regular">{boxPrice}</span> <span className="products__box-price-discount">{discountPrice}</span>
+          </p>
           <div className='button__wrapper'>
             <a href="/Home" className={`button ${available ? 'button--product-box' : 'button--unavailable'}`} role="button">
                 {available ? 'Add to cart' : 'Unavailable'}
             </a>
           </div>
         </article>
-        <section className={`Overlay ${this.state.isOpen ? "" : "Overlay--is-open"}`}>
+        <section className={`Overlay ${this.state.isOpen ? "" : "Overlay--is-open"} ${discountPrice.length ? 'Overlay--discount' : ''} 
+                ${bestSeller ? 'Overlay--best-seller' : ''}`}>
             <a onClick={this.ToggleOverlay} className="Overlay__close" type="button">
                 <img className="Overlay__close-img" src={ closeBtn }/>
             </a>
             <div className="container">
                 <div className="col-md-6">
                     <div className="Overlay__content">
-                        <img className="Overlay__content-img" src={ boxImage } alt="product"/>
+                        <div className="Overlay__content-img-wrapper">
+                            <img className="Overlay__content-img" src={ boxImage } alt="product"/>
+                        </div>
                         <h2 className="Overlay__content-title">
                             { boxTitle }
                         </h2>
                         <p className="Overlay__content-price">
-                        <span className="products__box-price-regular"> { boxPrice }</span> <span className="products__box-price-discount">{discountPrice}</span>
+                        <span className="Overlay__content-price-regular"> { boxPrice }</span> <span className="Overlay__content-price-discount">{discountPrice}</span>
                         </p>
-                        <a href="/Home" className={`button ${available ? 'button--product-box' : 'button--unavailable'}`} role="button">
-                            {available ? 'Add to cart' : 'Unavailable'}
-                        </a>
+                        <div className="button__wrapper">
+                            <a href="/Home" className={`button ${available ? 'button--product-box' : 'button--unavailable'}`} role="button">
+                                {available ? 'Add to cart' : 'Unavailable'}
+                            </a>
+                        </div>
                         </div>
                     </div>
                     <div className="col-md-6">

@@ -1,7 +1,7 @@
 const scrollingFunction = function() {
   window.onload = function() {
     const header = document.getElementsByClassName('Header')[0];
-    const nav = document.getElementsByClassName("Nav")[0];
+    const nav = document.getElementsByClassName('Nav')[0];
     const sticky = 'Nav--is-sticky';
 
     setTimeout( function() {
@@ -15,7 +15,7 @@ const scrollingFunction = function() {
             nav.classList.remove(sticky);
                 }
         });
-    }, 500);
+    }, 0);
 }
 };
 
