@@ -6,32 +6,32 @@ import videoposter from '../images/header-3.jpg';
 
 const Header = ({ videomp4, videowebm, header, subheader }) => {
 return (
-    <header className="header">
-        <div className="header__video-container">
-            <div className="header__filter"></div>
-            <video autoPlay loop className="header__video" poster={`${videoposter}`}>
+    <header className="Header">
+        <div className="Header__video-container">
+            <div className="Header__filter"></div>
+            <video autoPlay loop className="Header__video" poster={`${videoposter}`}>
                 <source src={`${videomp4}`} type="video/mp4"/>
                 Your browser does not support the video tag. I suggest you upgrade your browser.
                 <source src={`${videowebm}`} type="video/webm"/>
                 Your browser does not support the video tag. I suggest you upgrade your browser.
             </video>
-            <div className="header__poster">
+            <div className="Header__poster">
                 <img src={`${videoposter}`} alt="coffee-beans"/>
             </div>
         </div>
-        <div className="header__content">
+        <div className="Header__content">
             <div className="container">
-                <a className="header__content-logo" href="./home.html">
+                <a className="Header__content-logo" href="./home.html">
                     <img src={logo} alt="joe's-coffee-logo"/>
                 </a>
-                <h1 className="header__content-title">
+                <h1 className="Header__content-title">
                     {header}
                 </h1>
-                <p className="header__content-subtitle">
+                <p className="Header__content-subtitle">
                     {subheader}
                 </p>
-                <a href="/Home" className="header__content-arrow">
-                    <img className="header__content-arrow-img" src={scrollDownPointer}
+                <a href="/Home" className="Header__content-arrow">
+                    <img className="Header__content-arrow-img" src={scrollDownPointer}
                         alt="animated-down-pointing-arrow"/>
                 </a>
             </div>

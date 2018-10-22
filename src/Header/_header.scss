@@ -1,4 +1,4 @@
-.header {
+.Header {
   width: 100%;
   //height: 100vh;
   position: relative;
@@ -21,15 +21,14 @@
   }
 
   &__content-logo {
+    display: block;
     max-width: 200px;
     height: 198px;
     width: 25vw;
     margin: 4vh auto 0 auto;
-    // display: none;
     backface-visibility: hidden;
     transform: translateZ(0);
-    animation: logo-size 5s ease-out 4s, logo-dance 1s 2.5s ease-in infinite;
-    display: block;
+    animation: logo-size 2s ease-out, logo-dance 1s 2s ease-in infinite;
 
     @media screen and (max-height: 414px), screen and (max-width: 327px) {
       display: none;

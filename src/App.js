@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import scrollingFunction from './scrollingFunction';
 import './styles/App.scss';
 
 import Header from './Header/HeaderContainer';
@@ -18,7 +19,7 @@ import { productsContent } from './Products/productsContent';
 
 import Filtering from './Filtering/Filtering';
 
-// import Overlay from './Overlay/Overlay';
+scrollingFunction();
 
 class App extends Component {
   constructor() {
