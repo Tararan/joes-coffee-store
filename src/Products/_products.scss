@@ -73,6 +73,18 @@
     }
   }
 
+  &__box--best-seller {
+    &:hover:before {
+      border-top-color: $gold;
+      border-right-color: $gold;
+    }
+
+    &:hover:after {
+      border-bottom-color: $gold;
+      border-left-color: $gold;
+    }
+  }
+
   &__box--unavailable {
     &:hover:before {
       border-top-color: $light-red;
@@ -96,7 +108,7 @@
       top: -20px;
       right: 30px;
       transform: rotate(45deg);
-      background-image: url("#{$img-path}/assets/bestseller.png");  
+      background-image: url("#{$img-path}/assets/bestseller-gold.png");  
       background-repeat: no-repeat;
       background-size: contain;
     }

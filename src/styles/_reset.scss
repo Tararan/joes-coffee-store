@@ -11,6 +11,11 @@ body {
   background-size: cover;
 }
 
+.animated {
+  transform: translateY(500px);
+  transition: transform 2s;
+}
+
 .disable-scrolling {
   overflow-y: hidden;
   // padding-right: 17px;

@@ -30,7 +30,7 @@ return (
                 <p className="Header__content-subtitle">
                     {subheader}
                 </p>
-                <a href="/Home" className="Header__content-arrow">
+                <a className="Header__content-arrow">
                     <img className="Header__content-arrow-img" src={scrollDownPointer}
                         alt="animated-down-pointing-arrow"/>
                 </a>
