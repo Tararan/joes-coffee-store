@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-scroll';
 
 class Nav extends React.Component {
     constructor(props) {
@@ -13,10 +14,11 @@ class Nav extends React.Component {
       ToggleMenu = e => {
         this.setState({ isActive: !this.state.isActive });
       };
+
     render() {
         return (
             <div>
-            <nav id="nav" className="Nav">
+            <nav name="nav" className="Nav">
                 <div className="container">
                     <a href="/Home"className={`Nav-hamburger ${this.state.isActive ? "" : "Nav-hamburger--is-open"}`} data-toggle="collapse"
                     role="button" aria-expanded="false"
@@ -29,9 +31,13 @@ class Nav extends React.Component {
                     {this.props.listItem.map((item, i) => {
                         return (
                             <li key={`Nav ${item}-${i}`} >
-                                <a href="/Home" onClick={this.toggleMenu || this.ToggleHamburger}>
+                                <Link onClick={this.toggleMenu || this.ToggleHamburger}
+                                to={`${item.replace(/\s/g, "")}`} id={`Link-${item.replace(/\s/g, "")}`} offset={-170} smooth={'easeInOutQuint'} 
+                                duration={950} ignoreCancelEvents={true}>
+                                {/* <a href="/Home" onClick={this.toggleMenu || this.ToggleHamburger}> */}
                                     {item}
-                                </a>
+                                {/* </a> */}
+                                </Link>
                             </li>
                         );
                     })}

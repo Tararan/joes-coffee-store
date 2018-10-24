@@ -5,7 +5,7 @@ class ProductsContainer extends Component {
   render () {
     const { ToggleOverlay, productsContent } = this.props;
     return (
-      <section className="col-md-10">
+      <section className="col-md-10" name={`OurCoffees`}>
         {productsContent.map((user, i) => {
           return (
             <Products

@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from 'react-scroll';
+
 import logo from '../images/logo-large.png';
 import scrollDownPointer from '../images/assets/down-arrow-sketch.png';
 import videoposter from '../images/header-3.jpg';
@@ -30,10 +32,11 @@ return (
                 <p className="Header__content-subtitle">
                     {subheader}
                 </p>
-                <a className="Header__content-arrow">
+                <Link className="Header__content-arrow" 
+                to={`nav`} offset={0} smooth={'easeInOutQuint'} duration={950} ignoreCancelEvents={true}>
                     <img className="Header__content-arrow-img" src={scrollDownPointer}
                         alt="animated-down-pointing-arrow"/>
-                </a>
+                </Link>
             </div>
         </div>
     </header>
