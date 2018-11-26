@@ -11,7 +11,7 @@ return (
     <header className="Header">
         <div className="Header__video-container">
             <div className="Header__filter"></div>
-            <video autoPlay loop className="Header__video" poster={`${videoposter}`}>
+            <video autoPlay loop className="Header__video"  poster={`${videoposter}`}>
                 <source src={`${videomp4}`} type="video/mp4"/>
                 Your browser does not support the video tag. I suggest you upgrade your browser.
                 <source src={`${videowebm}`} type="video/webm"/>

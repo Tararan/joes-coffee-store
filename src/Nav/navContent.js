@@ -1,10 +1,14 @@
 export const navContent = [
     {
-        listItem: [
-            'Home',
-            'Blog',
-            'Find Us',
-            'Our Coffees'
-        ]
+        listItem: 'My personal website',
+        listItemLink: 'https://ivojurisic.com'
+    },
+    {
+        listItem: 'Github',
+        listItemLink: 'https://github.com/Tararan/joes-coffee-store'
+    },
+    {
+        listItem: 'Our Coffees',
+        listItemLink: ''
     }
 ]
