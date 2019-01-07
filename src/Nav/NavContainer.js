@@ -22,25 +22,39 @@ class NavContainer extends Component {
         <div>
             <nav name="nav" className="Nav">
                 <div className="container">
-                    <a className={`Nav-hamburger ${this.state.isActive ? "" : "Nav-hamburger--is-open"}`} data-toggle="collapse"
+                    <a className={`Nav__hamburger ${this.state.isActive ? "" : "Nav__hamburger--is-open"}`} data-toggle="collapse"
                     role="button" aria-expanded="false"
                     onClick={this.ToggleHamburger}>
-                        <span className="Nav-hamburger-line Nav-hamburger-line--first"></span>
-                        <span className="Nav-hamburger-line Nav-hamburger-line--second"></span>
-                        <span className="Nav-hamburger-line Nav-hamburger-line--third"></span>
+                        <span className="Nav__hamburger-line Nav__hamburger-line--first"></span>
+                        <span className="Nav__hamburger-line Nav__hamburger-line--second"></span>
+                        <span className="Nav__hamburger-line Nav__hamburger-line--third"></span>
                     </a>
-                    <ul className={`Nav-list ${this.state.isActive ? "" : "Nav-list--is-open"}`}>
-                {navContent.map((user, i) => {
-                return (
-                    <Nav key= {`Nav-${i}`} 
-                    listItem={user.listItem}
-                    listItemLink={user.listItemLink}
-                    />
-                )
-                })
-            }
-            </ul>
-            </div>
+                    <ul className={`Nav__list ${this.state.isActive ? "" : "Nav__list--is-open"}`}>
+                        {navContent.map((user, i) => {
+                            return (
+                                <Nav key= {`Nav__${i}`} 
+                                listItem={user.listItem}
+                                listItemLink={user.listItemLink}
+                                />
+                            )
+                        })}
+                    </ul>
+                    <div className="Nav__action">
+                        <a className="Nav__action-icon Nav__action-icon--login"></a>
+                        <a className="Nav__action-icon Nav__action-icon--cart"> 
+                            <span className="Nav__action-icon-count">0</span>
+                        </a>
+                        <ul className="Nav__action-cart-menu">
+                            <li className="Nav__action-cart-menu-item">
+                                <img src=""/> 
+                                <p>
+                                <span></span>
+                                <span></span>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
             <div className="header__stop-clicking"></div>
         </div>

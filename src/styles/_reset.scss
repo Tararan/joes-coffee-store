@@ -60,12 +60,14 @@ a {
   color: darken($light-green, 10%);
   transition: color 0.2s ease-out;
   text-decoration: none;
+  cursor: pointer;
 }
 
 a:hover,
 a:focus {
   color: saturate($light-green, 15%);
   text-decoration: none;
+  cursor: pointer;
 }
 
  article, aside, .products, .products__title, .Nav {

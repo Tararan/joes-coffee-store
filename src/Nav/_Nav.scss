@@ -10,6 +10,13 @@
   height: 49px;
   transition: filter 0.5s linear;
 
+  @media (min-width: $screen-sm) {
+    .container {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
   @media screen and (max-width: $screen-xs-max) {
     &:before {
       background-image: url("#{$img-path}/logo.png");
@@ -24,7 +31,57 @@
     }
   }
 
-  &-hamburger {
+  &__action {
+    display: flex;
+    align-items: center;
+  }
+  
+  &__action-icon {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 28px;
+  }
+
+  &__action-icon--login {
+    background-image: url("#{$img-path}/icons/padlock-empty.png");
+    transition: background-image 0.25s ease-in-out;
+    margin-right: 40px;
+
+    &:hover, &:focus {
+      background-image: url("#{$img-path}/icons/padlock-full.png");
+      transition: background-image 0.25s ease-in-out;
+    }
+  }
+ 
+  &__action-icon--cart {
+    position: relative;
+    background-image: url("#{$img-path}/icons/cart-empty.png");
+    transition: background-image 0.25s ease-in-out;
+
+    &:hover, &:focus {
+      background-image: url("#{$img-path}/icons/cart-full.png");
+      transition: background-image 0.25s ease-in-out;
+    }
+  }
+
+  &__action-icon-count {
+    content: "";
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    color: $dark-brown;
+    border-radius: 100%;
+    background-color: $light-green;
+    right: -15px;
+    top: -8px;
+  }
+
+  &__hamburger {
     color: $light-green;
     padding-top: 18px;
     margin-left: 10px;
@@ -39,7 +96,7 @@
     }
   }
 
-  &-hamburger-line {
+  &__hamburger-line {
     background-color: $light-brown;
     display: block;
     width: 30px;
@@ -50,22 +107,22 @@
     transition: 0.15s ease-in-out;
   }
 
-  &-hamburger:hover &-hamburger-line {
+  &__hamburger:hover &__hamburger-line {
     box-shadow: 0px 0px 30px rgba(255, 255, 255, 1);
   }
 
-  &-hamburger--is-open &-hamburger-line--first {
+  &__hamburger--is-open &__hamburger-line--first {
     margin-top: 4px;
     margin-bottom: -1px;
     transform: rotate(135deg);
   }
 
-  &-hamburger--is-open &-hamburger-line--second {
+  &__hamburger--is-open &__hamburger-line--second {
     margin-bottom: -2px;
     transform: rotate(-135deg);
   }
 
-  &-hamburger--is-open &-hamburger-line--third {
+  &__hamburger--is-open &__hamburger-line--third {
     margin-bottom: 10px;
     transform: rotate(-135deg);
   }
@@ -78,10 +135,14 @@
     height: 49px;
   }
 
-  &-list {
-    display: block;
+  &__list {
+    width: 100%;
     text-align: center;
     padding: 0 -3vw;
+
+    @media (min-width: $screen-sm) {
+      display: flex;
+    }
 
     @media (max-width: $screen-sm) {
       position: absolute;
@@ -95,18 +156,14 @@
     }
   }
 
-  &-list--is-open {
+  &__list--is-open {
     opacity: 0.75;
     visibility: visible;
     transition: visibility 0.3s ease-in, opacity 0.3s ease-in;
     padding-bottom: 110%;
-
-/*     @media (min-width: $screen-xs-min) {
-      display: none;
-    } */
   }
 
-  &-list li {
+  &__list li {
     display: inline;
   }
 
@@ -145,12 +202,10 @@
       background-image: radial-gradient(ellipse 75% 100%,
         rgba(90, 60, 29, 0.75),
         rgba(62, 41, 20, 0.75));
-      //background-image: radial-gradient(ellipse 75% 100%, $brown, darken($brown, 3%));
       display: block;
       width: 100%;
       border-bottom: 1px solid darken($brown, 3%);
     }
-
   }
 
   & #Link-OurCoffees {
