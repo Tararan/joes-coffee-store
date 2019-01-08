@@ -6,16 +6,17 @@ class NavContainer extends Component {
     constructor(props) {
         super(props);
         this.state = { isActive: true };
+        this.state = { isMenuOpen: true };
       }
     
       ToggleHamburger = e => {
         this.setState({ isActive: !this.state.isActive });
       };
-    
-      ToggleMenu = e => {
-        this.setState({ isActive: !this.state.isActive });
-      };
-      
+
+      ToggleCartMenu = e => {
+        this.setState({ isMenuOpen: !this.state.isMenuOpen });
+      }
+
     render () {
     const { navContent } = this.props
     return(
@@ -41,15 +42,16 @@ class NavContainer extends Component {
                     </ul>
                     <div className="Nav__action">
                         <a className="Nav__action-icon Nav__action-icon--login"></a>
-                        <a className="Nav__action-icon Nav__action-icon--cart"> 
+                        <a className="Nav__action-icon Nav__action-icon--cart"
+                        onClick= {this.ToggleCartMenu}> 
                             <span className="Nav__action-icon-count">0</span>
                         </a>
-                        <ul className="Nav__action-cart-menu">
+                        <ul className={`Nav__action-cart-menu ${this.state.isMenuOpen ? "": "Nav__action-cart-menu--is-open"}`}>
                             <li className="Nav__action-cart-menu-item">
-                                <img src=""/> 
+                                <img src="https://i.imgur.com/tcWrCoO.png"/> 
                                 <p>
-                                <span></span>
-                                <span></span>
+                                <span>Name</span>
+                                <span>Price</span>
                                 </p>
                             </li>
                         </ul>

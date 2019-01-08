@@ -81,6 +81,26 @@
     top: -8px;
   }
 
+  &__action-cart-menu {
+    position: absolute;
+    z-index: 100;
+    right: 0; 
+    top: 75px;
+    width: 200px;
+  }
+
+  &__action-cart-menu-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__action-cart-menu-item img {
+    width: auto;
+    height: 45px;
+   }
+
   &__hamburger {
     color: $light-green;
     padding-top: 18px;
@@ -160,7 +180,6 @@
     opacity: 0.75;
     visibility: visible;
     transition: visibility 0.3s ease-in, opacity 0.3s ease-in;
-    padding-bottom: 110%;
   }
 
   &__list li {
