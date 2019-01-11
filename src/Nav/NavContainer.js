@@ -1,21 +1,16 @@
 import React, { Component } from "react";
 import Nav from './Nav';
-
+import Cart from '../Cart/Cart';
 
 class NavContainer extends Component {
     constructor(props) {
         super(props);
         this.state = { isActive: true };
-        this.state = { isMenuOpen: true };
       }
     
       ToggleHamburger = e => {
         this.setState({ isActive: !this.state.isActive });
       };
-
-      ToggleCartMenu = e => {
-        this.setState({ isMenuOpen: !this.state.isMenuOpen });
-      }
 
     render () {
     const { navContent } = this.props
@@ -40,21 +35,9 @@ class NavContainer extends Component {
                             )
                         })}
                     </ul>
-                    <div className="Nav__action">
+                    <div className="Nav__dynamic">
                         <a className="Nav__action-icon Nav__action-icon--login"></a>
-                        <a className="Nav__action-icon Nav__action-icon--cart"
-                        onClick= {this.ToggleCartMenu}> 
-                            <span className="Nav__action-icon-count">0</span>
-                        </a>
-                        <ul className={`Nav__action-cart-menu ${this.state.isMenuOpen ? "": "Nav__action-cart-menu--is-open"}`}>
-                            <li className="Nav__action-cart-menu-item">
-                                <img src="https://i.imgur.com/tcWrCoO.png"/> 
-                                <p>
-                                <span>Name</span>
-                                <span>Price</span>
-                                </p>
-                            </li>
-                        </ul>
+                        <Cart />
                     </div>
                 </div>
             </nav>

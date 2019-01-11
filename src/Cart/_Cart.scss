@@ -1,0 +1,71 @@
+.Cart {
+  &__button {
+    display: flex;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 28px;
+    height: 28px;
+  }
+
+  &__button--login {
+    background-image: url("#{$img-path}/icons/padlock-empty.png");
+    transition: background-image 0.25s ease-in-out;
+    margin-right: 40px;
+
+    &:hover, &:focus {
+      background-image: url("#{$img-path}/icons/padlock-full.png");
+      transition: background-image 0.25s ease-in-out;
+    }
+  }
+ 
+  &__button {
+    position: relative;
+    background-image: url("#{$img-path}/icons/cart-empty.png");
+    transition: background-image 0.25s ease-in-out;
+
+    &:hover, &:focus {
+      background-image: url("#{$img-path}/icons/cart-full.png");
+      transition: background-image 0.25s ease-in-out;
+    }
+  }
+
+  &__button-count {
+    content: "";
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    color: $dark-brown;
+    border-radius: 100%;
+    background-color: $light-green;
+    right: -15px;
+    top: -8px;
+  }
+
+  &__menu {
+    position: absolute;
+    z-index: 100;
+    right: 0; 
+    top: 49px;
+    width: 250px;
+    padding: 10px 20px;
+    border: 1px solid $light-brown;
+    border-radius: 0 0 10px 10px;
+    background-color: $light-brown-75;
+  }
+
+  &__menu-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu-item img {
+    width: auto;
+    height: 45px;
+   }
+}

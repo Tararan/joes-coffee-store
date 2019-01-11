@@ -7,7 +7,12 @@ constructor(props) {
     this.state = { isOpen: true };
 }
 
+addToCart = (e) => {
+    // console.log(e);
+  }
+
 ToggleOverlay = () => {
+    console.log('clicked');
     this.setState({ isOpen: !this.state.isOpen });
     const article = document.getElementsByTagName('article');
     const sidebar = document.getElementsByTagName('aside');
@@ -33,18 +38,19 @@ ToggleOverlay = () => {
     const { boxImage, boxTitle, boxPrice, discountPrice, bestSeller, available, description} = this.props;
     return (
       <div className="col-md-4">
-        <article onClick={this.ToggleOverlay} className={ `products__box ${discountPrice.length ? 'products__box--discount' : ''}
+        <article className={ `products__box ${discountPrice.length ? 'products__box--discount' : ''}
             ${bestSeller ? 'products__box--best-seller' : ''} 
             ${available ? '' : 'products__box--unavailable'} ` }>
-          <div className="products__box-img-wrapper">
+          <div className="products__box-img-wrapper" onClick={this.ToggleOverlay}>
             <img className="products__box-img" src={boxImage} alt="product" />
           </div>
           <h2 className="products__box-title">{boxTitle}</h2>
           <p className="products__box-price">
-          <span className="products__box-price-regular">{boxPrice}</span> <span className="products__box-price-discount">{discountPrice}</span>
+            <span className="products__box-price-regular">{boxPrice}</span> <span className="products__box-price-discount">{discountPrice}</span>
           </p>
           <div className='button__wrapper'>
-            <a href="/Home" className={`button ${available ? 'button--product-box' : 'button--unavailable'}`} role="button">
+            <a className={`button ${available ? 'button--product-box' : 'button--unavailable'}`} role="button"
+            onClick= {this.addToCart}>
                 {available ? 'Add to cart' : 'Unavailable'}
             </a>
           </div>
@@ -67,7 +73,8 @@ ToggleOverlay = () => {
                         <span className="Overlay__content-price-regular"> { boxPrice }</span> <span className="Overlay__content-price-discount">{discountPrice}</span>
                         </p>
                         <div className="button__wrapper">
-                            <a href="/Home" className={`button ${available ? 'button--product-box' : 'button--unavailable'}`} role="button">
+                            <a className={`button ${available ? 'button--product-box' : 'button--unavailable'}`} role="button"
+                            onClick= {this.addToCart}>>
                                 {available ? 'Add to cart' : 'Unavailable'}
                             </a>
                         </div>

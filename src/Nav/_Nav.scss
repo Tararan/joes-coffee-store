@@ -31,76 +31,12 @@
     }
   }
 
-  &__action {
+  &__dynamic {
     display: flex;
     align-items: center;
+    position: relative;
   }
   
-  &__action-icon {
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 28px;
-    height: 28px;
-  }
-
-  &__action-icon--login {
-    background-image: url("#{$img-path}/icons/padlock-empty.png");
-    transition: background-image 0.25s ease-in-out;
-    margin-right: 40px;
-
-    &:hover, &:focus {
-      background-image: url("#{$img-path}/icons/padlock-full.png");
-      transition: background-image 0.25s ease-in-out;
-    }
-  }
- 
-  &__action-icon--cart {
-    position: relative;
-    background-image: url("#{$img-path}/icons/cart-empty.png");
-    transition: background-image 0.25s ease-in-out;
-
-    &:hover, &:focus {
-      background-image: url("#{$img-path}/icons/cart-full.png");
-      transition: background-image 0.25s ease-in-out;
-    }
-  }
-
-  &__action-icon-count {
-    content: "";
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 20px;
-    height: 20px;
-    font-size: 10px;
-    color: $dark-brown;
-    border-radius: 100%;
-    background-color: $light-green;
-    right: -15px;
-    top: -8px;
-  }
-
-  &__action-cart-menu {
-    position: absolute;
-    z-index: 100;
-    right: 0; 
-    top: 75px;
-    width: 200px;
-  }
-
-  &__action-cart-menu-item {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  &__action-cart-menu-item img {
-    width: auto;
-    height: 45px;
-   }
-
   &__hamburger {
     color: $light-green;
     padding-top: 18px;

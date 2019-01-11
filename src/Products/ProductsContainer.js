@@ -3,7 +3,7 @@ import Products from "./Products";
 
 class ProductsContainer extends Component {
   render () {
-    const { ToggleOverlay, productsContent } = this.props;
+    const { ToggleOverlay, productsContent, addToCart } = this.props;
     return (
       <section className="col-md-10" name={`OurCoffees`}>
         {productsContent.map((user, i) => {
@@ -11,6 +11,7 @@ class ProductsContainer extends Component {
             <Products
               key={`Products-key-${i}`}
               ToggleOverlay={ToggleOverlay}
+              addToCart={addToCart}
               productsTitle={user.productsTitle}
               boxImage={user.boxImage.replace(/\s/g, "")}
               boxTitle={user.boxTitle}

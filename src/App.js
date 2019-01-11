@@ -52,49 +52,53 @@ searchOnClick = () => {
     this.setState({ searchfield: search.value });
 }
 
-  render() {
-    const filteredProducts = this.state.products.filter(item => {
-      const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
-      if(!this.state.isfilterdiscountPrice && !this.state.isfilterbestSeller && !this.state.isfilteravailable){
-        if((searchedItem)){
-          return item;
+addToCart = (e) => {
+  console.log(e.target.boxTitle);
+}
+
+render() {
+  const filteredProducts = this.state.products.filter(item => {
+    const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
+    if(!this.state.isfilterdiscountPrice && !this.state.isfilterbestSeller && !this.state.isfilteravailable){
+      if((searchedItem)){
+        return item;
+      }
+    }
+    /* 
+      Individual filters
+    */
+    if(this.state.isfilteravailable) {
+        if(!this.state.isfilterbestSeller && !this.state.isfilterdiscountPrice) {
+          if(searchedItem && item.available){
+            return item;
+          }
         }
-      }
-      /* 
-        Individual filters
-      */
-      if(this.state.isfilteravailable) {
-          if(!this.state.isfilterbestSeller && !this.state.isfilterdiscountPrice) {
-            if(searchedItem && item.available){
-              return item;
-            }
+        if(this.state.isfilterbestSeller && this.state.isfilteravailable) {
+          if(searchedItem && item.bestSeller && item.available && this.state.isfilteravailable){
+            return item;
+          } 
+        }
+        if(this.state.isfilterdiscountPrice && this.state.isfilteravailable) {
+          if(searchedItem && item.discountPrice.length && item.available && this.state.isfilteravailable){
+            return item;
           }
-          if(this.state.isfilterbestSeller && this.state.isfilteravailable) {
-            if(searchedItem && item.bestSeller && item.available && this.state.isfilteravailable){
-              return item;
-            } 
+        }
+    }   
+    else {
+        if(this.state.isfilterbestSeller && !this.state.isfilteravailable) {
+          if(searchedItem && item.bestSeller){
+            return item;
+          } 
+        }
+        if(this.state.isfilterdiscountPrice && !this.state.isfilteravailable) {
+          if(searchedItem && item.discountPrice.length){
+            return item;
           }
-          if(this.state.isfilterdiscountPrice && this.state.isfilteravailable) {
-            if(searchedItem && item.discountPrice.length && item.available && this.state.isfilteravailable){
-              return item;
-            }
-          }
-      }   
-      else {
-          if(this.state.isfilterbestSeller && !this.state.isfilteravailable) {
-            if(searchedItem && item.bestSeller){
-              return item;
-            } 
-          }
-          if(this.state.isfilterdiscountPrice && !this.state.isfilteravailable) {
-            if(searchedItem && item.discountPrice.length){
-              return item;
-            }
-          }
-      }
+        }
+    }
   });
   
-    return (
+  return (
       <div className="App">
         {/* <Overlay productsContent = { productsContent } /> */}
         <Header headerContent = { headerContent } />
@@ -118,6 +122,8 @@ searchOnClick = () => {
               filteravailable = { this.onfilteravailable }
             />
             <ProductsContainer 
+              addToCart = { this.addToCart }
+
               productsContent = { filteredProducts }
             />
             </section>
