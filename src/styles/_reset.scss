@@ -5,6 +5,13 @@ html, body {
   width: 100%;
 }
 
+button {
+  background-color: transparent;
+  border: none; 
+  width: 100%;
+  -webkit-appearance: button;
+}
+
 body {
   overflow-x: hidden;
   background: radial-gradient(ellipse 75% 125%, lighten($light-brown, 30%), lighten($light-brown, 5%));

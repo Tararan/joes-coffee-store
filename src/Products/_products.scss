@@ -7,25 +7,27 @@
     font-size: $m-font;
     margin-bottom:50px;
   }
+  
+  &__box-img {
+    max-height: 200px;
+    width: auto;
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+  }
 
   &__box {
     display: block;
     text-align: center;
     box-shadow: inset 0 0 0 2px transparent;
     color: $light-brown;
-    vertical-align: middle;
     padding: 20px;
     position: relative;
     margin-bottom: 15px;
 
-    &-img {
-      max-height: 200px;
-      width: auto;
-    }
-
-    &:hover {
+/*     &:hover {
       cursor: pointer;
-    }
+    } */
 
     &:before,
     &:after {

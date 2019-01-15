@@ -3,14 +3,14 @@ import Products from "./Products";
 
 class ProductsContainer extends Component {
   render () {
-    const { ToggleOverlay, productsContent, addToCart } = this.props;
+    const { toggleOverlay, productsContent, addToCart } = this.props;
     return (
       <section className="col-md-10" name={`OurCoffees`}>
         {productsContent.map((user, i) => {
           return (
             <Products
               key={`Products-key-${i}`}
-              ToggleOverlay={ToggleOverlay}
+              toggleOverlay={toggleOverlay}
               addToCart={addToCart}
               productsTitle={user.productsTitle}
               boxImage={user.boxImage.replace(/\s/g, "")}

@@ -19,6 +19,8 @@ import { productsContent } from './Products/productsContent';
 
 import Filtering from './Filtering/Filtering';
 
+import Overlay from './Overlay/Overlay';
+
 scrollingFunction();
 
 class App extends Component {
@@ -29,7 +31,8 @@ class App extends Component {
         searchfield: '',
         isfilterbestSeller: false,
         isfilterdiscountPrice: false,
-        isfilteravailable: false
+        isfilteravailable: false,
+        isOpen: true
     };
 }
 
@@ -52,8 +55,47 @@ searchOnClick = () => {
     this.setState({ searchfield: search.value });
 }
 
-addToCart = (e) => {
+/* addToCart = (e) => {
   console.log(e.target.boxTitle);
+} */
+
+toggleBlur = () => {
+  const article = document.getElementsByTagName('article');
+  const sidebar = document.getElementsByTagName('aside');
+  const nav = document.getElementsByClassName('Nav');
+  const body = document.getElementsByTagName('body')[0];
+  const productsTitle = document.getElementsByClassName('products__title');
+  const blurRepeater = function(element) {
+    for (let i = 0; i < element.length; i++) {
+      element[i].classList.toggle('blur-applied');
+    }
+  }
+  blurRepeater(article);
+  blurRepeater(sidebar);
+  blurRepeater(productsTitle);
+  blurRepeater(nav);
+  body.classList.toggle('disable-scrolling');
+}
+
+toggleOverlay = (e) => {
+  { this.toggleBlur() };
+  this.setState({ isOpen: !this.state.isOpen });
+  const overlay = document.getElementsByClassName('Overlay')[0];
+  const overlayFilling = function (targetEl, destinationEl) {
+    const targetHTML = e.target.closest('article').getElementsByClassName(`${targetEl}`)[0].innerHTML;
+    overlay.getElementsByClassName(`${destinationEl}`)[0].innerHTML = targetHTML;
+  }
+  overlay.classList.toggle('Overlay--is-open');
+  overlayFilling('products__box-title', 'Overlay__content-title');
+  overlayFilling('products__box-title', 'Overlay__description-title');
+  overlayFilling('products__description-txt', 'Overlay__description-txt');
+}
+
+
+closeOverlay = () => {
+  { this.toggleBlur() };
+  const overlay = document.getElementsByClassName('Overlay')[0];
+  overlay.classList.toggle('Overlay--is-open');
 }
 
 render() {
@@ -123,9 +165,12 @@ render() {
             />
             <ProductsContainer 
               addToCart = { this.addToCart }
-
               productsContent = { filteredProducts }
+              toggleOverlay= { this.toggleOverlay }
             />
+            <Overlay 
+              productsContent = { productsContent } 
+              closeOverlay= { this.closeOverlay } />
             </section>
           </div>
         </section>

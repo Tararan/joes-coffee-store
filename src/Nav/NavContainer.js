@@ -18,13 +18,13 @@ class NavContainer extends Component {
         <div>
             <nav name="nav" className="Nav">
                 <div className="container">
-                    <a className={`Nav__hamburger ${this.state.isActive ? "" : "Nav__hamburger--is-open"}`} data-toggle="collapse"
+                    <button className={`Nav__hamburger ${this.state.isActive ? "" : "Nav__hamburger--is-open"}`} data-toggle="collapse"
                     role="button" aria-expanded="false"
                     onClick={this.ToggleHamburger}>
                         <span className="Nav__hamburger-line Nav__hamburger-line--first"></span>
                         <span className="Nav__hamburger-line Nav__hamburger-line--second"></span>
                         <span className="Nav__hamburger-line Nav__hamburger-line--third"></span>
-                    </a>
+                    </button>
                     <ul className={`Nav__list ${this.state.isActive ? "" : "Nav__list--is-open"}`}>
                         {navContent.map((user, i) => {
                             return (
@@ -36,7 +36,7 @@ class NavContainer extends Component {
                         })}
                     </ul>
                     <div className="Nav__dynamic">
-                        <a className="Nav__action-icon Nav__action-icon--login"></a>
+                        <button className="Nav__action-icon Nav__action-icon--login"></button>
                         <Cart />
                     </div>
                 </div>

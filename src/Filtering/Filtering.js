@@ -22,9 +22,9 @@ class Filtering extends Component {
             onKeyPress={searchChange}
           />
           </div>
-          <a onClick={search} className="button button--search">
+          <button onClick={search} className="button button--search">
             Search
-          </a>
+          </button>
           <div className="Filtering__checkbox">
             <input
               name="bestSeller"

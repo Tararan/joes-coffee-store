@@ -11,11 +11,8 @@ export default class HeaderContainer extends Component {
             <Header  key={`Header-key-${i}`}
                 videomp4 = { user.videomp4.replace(/\s/g, "") }
                 videowebm = { user.videowebm.replace(/\s/g, "") }
-                // videoposter = { user.videoposter.replace(/\s/g, "")  }
-                // logo = { user.logo.replace(/\s/g, "")  }
                 header = { user.header }
                 subheader = { user.subheader }
-                // scrollDownPointer = { user.scrollDownPointer }
             />
         )
             })}

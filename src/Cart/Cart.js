@@ -14,10 +14,10 @@ class Cart extends Component {
 render () {
     return(
         <span className="Cart">
-            <a className="Cart__button"
+            <button className="Cart__button"
             onClick= {this.ToggleCartMenu}> 
                 <span className="Cart__button-count">0</span>
-            </a>
+            </button>
             <ul className={`Cart__menu ${this.state.isMenuOpen ? "": "Cart__menu--is-open"}`}>
                 <li className="Cart__menu-item">
                     <img src="https://i.imgur.com/tcWrCoO.png"/> 
