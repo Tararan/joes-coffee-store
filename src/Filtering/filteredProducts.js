@@ -15,7 +15,7 @@ const filteredProducts = this.state.products.filter(item => {
   }
     if(this.state.isfilterdiscountPrice) {
       const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
-      if((searchedItem && this.state.isfilterdiscountPrice && item.discountPrice.length)
+      if((searchedItem && this.state.isfilterdiscountPrice && item.discountPrice)
       || (searchedItem && !this.state.isfilterdiscountPrice)
         ){
         return item;

@@ -1,4 +1,4 @@
-const scrollingFunction = function() {
+const scrollingFunction = () => {
   window.onscroll = function() {
     const header = document.getElementsByClassName('Header')[0];
     const nav = document.getElementsByClassName('Nav')[0];

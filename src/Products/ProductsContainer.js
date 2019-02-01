@@ -10,14 +10,15 @@ class ProductsContainer extends Component {
           return (
             <Products
               key={`Products-key-${i}`}
+              id={user.id}
               toggleOverlay={toggleOverlay}
               addToCart={addToCart}
               productsTitle={user.productsTitle}
-              boxImage={user.boxImage.replace(/\s/g, "")}
-              boxTitle={user.boxTitle}
-              boxPrice={user.boxPrice}
-              discountPrice={user.discountPrice}
-              bestSeller={user.bestSeller}
+              boximage={user.boximage.replace(/\s/g, "")}
+              boxtitle={user.boxtitle}
+              boxprice={user.boxprice}
+              discountprice={user.discountprice}
+              bestseller={user.bestseller}
               available={user.available}
               description={user.description}
             />

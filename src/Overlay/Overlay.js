@@ -1,12 +1,17 @@
 import React,  { Component } from 'react';
 import closeBtn from "../images/assets/close-2.png";
 
+
 class Overlay extends Component {
-render () {
-    const { boxImage, boxTitle, boxPrice, discountPrice, bestSeller, available, description, closeOverlay} = this.props;
-    return (
-        <section className={`Overlay
-        ${bestSeller ? 'Overlay--best-seller' : ''}`}>
+    render () {
+        const { boximage, boxtitle, boxprice, discountprice, bestseller, available, description, closeOverlay, toggleOverlay} = this.props;
+        console.log('toggleOverlay');
+        console.log(toggleOverlay.isOpen);
+        // console.log(clickedItem);
+        return (
+            <section className={`Overlay
+        ${!toggleOverlay ? 'Overlay--is-open':''}
+        ${bestseller ? 'Overlay--best-seller' : ''}`}>
             <button onClick={closeOverlay} className="Overlay__close">
                 <img className="Overlay__close-img" src={ closeBtn }/>
             </button>
@@ -14,13 +19,13 @@ render () {
             <div className="col-md-6">
                 <div className="Overlay__content">
                     <div className="Overlay__content-img-wrapper">
-                        <img className="Overlay__content-img" src={ boxImage } alt="product"/>
+                        <img className="Overlay__content-img" src={ boximage } alt="product"/>
                     </div>
                     <h2 className="Overlay__content-title">
-                        { boxTitle } test
+                        { boxtitle } test
                     </h2>
                     <p className="Overlay__content-price">
-                    <span className="Overlay__content-price-regular"> { boxPrice }</span> <span className="Overlay__content-price-discount">{discountPrice}</span>
+                    <span className="Overlay__content-price-regular"> { boxprice }</span> <span className="Overlay__content-price-discount">{discountprice}</span>
                     </p>
                     <div className="button__wrapper">
                         <a className={`button ${available ? 'button--product-box' : 'button--unavailable'}`} role="button"
@@ -32,7 +37,7 @@ render () {
                 </div>
                 <div className="col-md-6">
                     <div className="Overlay__description">
-                        <h1 className="Overlay__description-title">{`About ${ boxTitle } `} </h1>
+                        <h1 className="Overlay__description-title">{`About ${ boxtitle } `} </h1>
                         <p className="Overlay__description-txt">
                             {description}
                         </p>
@@ -42,6 +47,18 @@ render () {
         </section>
     );
 }
-}
+} 
 
 export default Overlay;
+
+
+/* CREATE TABLE products(
+    id serial PRIMARY KEY
+    boximage text, 
+    boxtitle text, 
+    boxprice money, 
+    discountprice money, 
+    bestseller boolean, 
+    available boolean, 
+    description  text
+); */

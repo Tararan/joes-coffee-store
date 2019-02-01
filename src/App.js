@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import scrollingFunction from './scrollingFunction';
+import toggleBlur from './Overlay/overlayFunctions/toggleBlur';
+// import toggleOverlay from './Overlay/overlayFunctions/toggleOverlay';
+// import toggleOverlayFuncton from './Overlay/toggleOverlay';
+// import fetchProducts from './Products/fetchProducts';
 import './styles/App.scss';
 
 import Header from './Header/HeaderContainer';
@@ -18,7 +22,6 @@ import ProductsContainer from './Products/ProductsContainer';
 import { productsContent } from './Products/productsContent';
 
 import Filtering from './Filtering/Filtering';
-
 import Overlay from './Overlay/Overlay';
 
 scrollingFunction();
@@ -27,14 +30,65 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-        products: productsContent,
-        searchfield: '',
-        isfilterbestSeller: false,
-        isfilterdiscountPrice: false,
-        isfilteravailable: false,
-        isOpen: true
+      products: productsContent,
+      clickedItem: [],
+      searchfield: '',
+      isfilterbestSeller: false,
+      isfilterdiscountPrice: false,
+      isfilteravailable: false,
+      isOpen: true
     };
-}
+  }
+  
+  toggleOverlay = (e) => {
+    { toggleBlur() };
+    this.setState({ isOpen: !this.state.isOpen });
+    // this
+    this.state.products.map(item => {
+      // console.log(item.id);
+      // console.log(e.target.id);
+      
+      if(item.id == e.target.id) {
+        // clickedItem.push(item);
+        console.log(item);
+        this.setState({
+          clickedItem: item
+        });
+        // clickedItem.pus
+        // console.log(clickedItem);
+        // return item;
+      }
+    });
+/*     console.log(this.state.products[0].id);
+    console.log(e.target.id); */
+
+ /*    const overlay = document.getElementsByClassName('Overlay')[0];
+    const overlayFilling = function (targetEl, destinationEl) {
+      if(destinationEl === 'Overlay__content-img') {
+        const targetHTML = e.target.closest('article').getElementsByClassName(`${targetEl}`)[0].src;  
+        overlay.getElementsByClassName(`${destinationEl}`)[0].src = targetHTML;
+      } else {
+        const targetHTML = e.target.closest('article').getElementsByClassName(`${targetEl}`)[0].innerHTML;
+        overlay.getElementsByClassName(`${destinationEl}`)[0].innerHTML = targetHTML;
+      }
+    }
+    overlay.classList.toggle('Overlay--is-open');
+    overlayFilling('products__box-title', 'Overlay__content-title');
+    overlayFilling('products__box-title', 'Overlay__content-title');
+    overlayFilling('products__box-title', 'Overlay__description-title');
+    overlayFilling('products__description-txt', 'Overlay__description-txt');
+    overlayFilling('products__box-img', 'Overlay__content-img');
+    overlayFilling('products__box-img', 'Overlay__content-img');
+    overlayFilling('products__box-price-regular', 'Overlay__content-price-regular');
+    overlayFilling('products__box-price-discount', 'Overlay__content-price-discount'); */
+  }
+
+  closeOverlay = () => {
+    { toggleBlur() };
+    this.setState({ isOpen: !this.state.isOpen });
+ /*    const overlay = document.getElementsByClassName('Overlay')[0];
+    overlay.classList.toggle('Overlay--is-open'); */
+  }
 
 onfilterbestSeller = () => {
   this.setState({ isfilterbestSeller: !this.state.isfilterbestSeller });
@@ -42,7 +96,7 @@ onfilterbestSeller = () => {
 onfilterdiscountPrice = () => {
   this.setState({ isfilterdiscountPrice: !this.state.isfilterdiscountPrice });
 }
-onfilteravailable= () => {
+onfilteravailable = () => {
   this.setState({ isfilteravailable: !this.state.isfilteravailable});
 }
 
@@ -56,51 +110,13 @@ searchOnClick = () => {
 }
 
 /* addToCart = (e) => {
-  console.log(e.target.boxTitle);
+  console.log(e.target.boxtitle);
 } */
 
-toggleBlur = () => {
-  const article = document.getElementsByTagName('article');
-  const sidebar = document.getElementsByTagName('aside');
-  const nav = document.getElementsByClassName('Nav');
-  const body = document.getElementsByTagName('body')[0];
-  const productsTitle = document.getElementsByClassName('products__title');
-  const blurRepeater = function(element) {
-    for (let i = 0; i < element.length; i++) {
-      element[i].classList.toggle('blur-applied');
-    }
-  }
-  blurRepeater(article);
-  blurRepeater(sidebar);
-  blurRepeater(productsTitle);
-  blurRepeater(nav);
-  body.classList.toggle('disable-scrolling');
-}
-
-toggleOverlay = (e) => {
-  { this.toggleBlur() };
-  this.setState({ isOpen: !this.state.isOpen });
-  const overlay = document.getElementsByClassName('Overlay')[0];
-  const overlayFilling = function (targetEl, destinationEl) {
-    const targetHTML = e.target.closest('article').getElementsByClassName(`${targetEl}`)[0].innerHTML;
-    overlay.getElementsByClassName(`${destinationEl}`)[0].innerHTML = targetHTML;
-  }
-  overlay.classList.toggle('Overlay--is-open');
-  overlayFilling('products__box-title', 'Overlay__content-title');
-  overlayFilling('products__box-title', 'Overlay__description-title');
-  overlayFilling('products__description-txt', 'Overlay__description-txt');
-}
-
-
-closeOverlay = () => {
-  { this.toggleBlur() };
-  const overlay = document.getElementsByClassName('Overlay')[0];
-  overlay.classList.toggle('Overlay--is-open');
-}
-
 render() {
+
   const filteredProducts = this.state.products.filter(item => {
-    const searchedItem = item.boxTitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
+    const searchedItem = item.boxtitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
     if(!this.state.isfilterdiscountPrice && !this.state.isfilterbestSeller && !this.state.isfilteravailable){
       if((searchedItem)){
         return item;
@@ -116,24 +132,24 @@ render() {
           }
         }
         if(this.state.isfilterbestSeller && this.state.isfilteravailable) {
-          if(searchedItem && item.bestSeller && item.available && this.state.isfilteravailable){
+          if(searchedItem && item.bestseller && item.available && this.state.isfilteravailable){
             return item;
           } 
         }
         if(this.state.isfilterdiscountPrice && this.state.isfilteravailable) {
-          if(searchedItem && item.discountPrice.length && item.available && this.state.isfilteravailable){
+          if(searchedItem && item.discountprice && item.available && this.state.isfilteravailable){
             return item;
           }
         }
     }   
     else {
         if(this.state.isfilterbestSeller && !this.state.isfilteravailable) {
-          if(searchedItem && item.bestSeller){
+          if(searchedItem && item.bestseller){
             return item;
           } 
         }
         if(this.state.isfilterdiscountPrice && !this.state.isfilteravailable) {
-          if(searchedItem && item.discountPrice.length){
+          if(searchedItem && item.discountprice){
             return item;
           }
         }
@@ -142,7 +158,6 @@ render() {
   
   return (
       <div className="App">
-        {/* <Overlay productsContent = { productsContent } /> */}
         <Header headerContent = { headerContent } />
         <Nav navContent = { navContent } />
         <section className="container section" id="content">
@@ -169,7 +184,9 @@ render() {
               toggleOverlay= { this.toggleOverlay }
             />
             <Overlay 
-              productsContent = { productsContent } 
+              toggleOverlay = { this.state.isOpen }
+              toggleOverlay = { this.state.clickedItem }
+              // toggleOverlay = { toggleOverlay.clickedProduct }
               closeOverlay= { this.closeOverlay } />
             </section>
           </div>

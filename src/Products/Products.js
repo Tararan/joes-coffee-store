@@ -1,20 +1,21 @@
 import React, { Component } from "react";
 
 class Products extends Component {
+  // constructor(props)
   render() {
-    const { boxImage, boxTitle, boxPrice, discountPrice, bestSeller, available, addToCart, toggleOverlay, description} = this.props;
+    const { id, boximage, boxtitle, boxprice, discountprice, bestseller, available, addToCart, toggleOverlay, description} = this.props;
     return (
       <div className="col-md-4">
-        <article className={ `products__box ${discountPrice.length ? 'products__box--discount' : ''}
-            ${bestSeller ? 'products__box--best-seller' : ''} 
+        <article className={ `products__box ${discountprice ? 'products__box--discount' : ''}
+            ${bestseller ? 'products__box--best-seller' : ''} 
             ${available ? '' : 'products__box--unavailable'} ` }>
           <div className="products__box-img-wrapper" 
           onClick={toggleOverlay}>
-            <img className="products__box-img" src={boxImage} alt="product" />
+            <img id={id} className="products__box-img" src={boximage} alt="product" />
           </div>
-          <h2 className="products__box-title">{boxTitle}</h2>
+          <h2 className="products__box-title">{boxtitle}</h2>
           <p className="products__box-price">
-          <span className="products__box-price-regular">{boxPrice}</span> <span className="products__box-price-discount">{discountPrice}</span>
+          <span className="products__box-price-regular">{boxprice}</span> <span className="products__box-price-discount">{discountprice}</span>
           </p>
           <div className='button__wrapper'>
             <button className={`button ${available ? 'button--product-box' : 'button--unavailable'}`}
