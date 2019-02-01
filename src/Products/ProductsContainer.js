@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Products from "./Products";
 
 class ProductsContainer extends Component {
-  render () {
-    const { toggleOverlay, productsContent, addToCart } = this.props;
+  render() {
+    const { toggleOverlay, productsContent, getClickedProduct, addToCart } = this.props;
     return (
       <section className="col-md-10" name={`OurCoffees`}>
         {productsContent.map((user, i) => {
@@ -11,8 +11,9 @@ class ProductsContainer extends Component {
             <Products
               key={`Products-key-${i}`}
               id={user.id}
-              toggleOverlay={toggleOverlay}
               addToCart={addToCart}
+              toggleOverlay={toggleOverlay}
+              getClickedProduct={getClickedProduct}
               productsTitle={user.productsTitle}
               boximage={user.boximage.replace(/\s/g, "")}
               boxtitle={user.boxtitle}
@@ -26,7 +27,7 @@ class ProductsContainer extends Component {
         })}
       </section>
     )
-    }
   }
+}
 
-    export default ProductsContainer;
+export default ProductsContainer;

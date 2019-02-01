@@ -1,6 +1,4 @@
 html, body {
-  //background: radial-gradient(ellipse 75% 125%, lighten($light-brown,30%), lighten($light-brown,5%));
-  //background-size: cover;
   height: 100%;
   width: 100%;
 }
@@ -25,7 +23,7 @@ body {
 
 .disable-scrolling {
   overflow-y: hidden;
-  // padding-right: 17px;
+  padding-right: 17px;
 
   @media screen and (max-width: $screen-xs-max) {
     overflow: hidden;
@@ -36,11 +34,7 @@ body {
 
 main {
   padding-top: 92px;
-/*   background: radial-gradient(ellipse 75% 125%, lighten($light-brown, 30%), lighten($light-brown, 5%));
-  background-size: cover; */
   overflow-x: hidden;
-  //height: 100%;
-  //width: 100%;
 }
 
 ul {
@@ -77,19 +71,14 @@ a:focus {
   cursor: pointer;
 }
 
- article, aside, .products, .products__title, .Nav {
+.Nav, .Header, .section {
   filter: blur(0);
-  transition: filter 1s linear;
-}
-
-.Nav {
-  filter: blur(0);
-  transition: filter 10s linear 10s;
+  transition: filter 0.7s linear;
 }
 
 .blur-applied {
   filter: blur(20px);
-  transition: filter 1s linear;
+  transition: filter 0.7s linear;
 }
 
 .blurred-content__frame {
