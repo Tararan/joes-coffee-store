@@ -16,6 +16,9 @@ body {
   background-size: cover;
 }
 
+.hide {
+  display: none;
+}
 .animated {
   transform: translateY(500px);
   transition: transform 2s;

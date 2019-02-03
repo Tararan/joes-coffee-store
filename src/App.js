@@ -6,7 +6,7 @@ import './styles/App.scss';
 import Header from './Header/HeaderContainer';
 import { headerContent } from './Header/headerContent';
 
-import Nav from './Nav/NavContainer';
+import NavContainer from './Nav/NavContainer';
 import { navContent } from './Nav/navContent';
 
 import Main from './Main/MainContainer';
@@ -18,11 +18,11 @@ import { asideContent } from './Aside/asideContent';
 import ProductsContainer from './Products/ProductsContainer';
 import { productsContent } from './Products/productsContent';
 
-import Cart from './Cart/Cart';
 import Filtering from './Filtering/Filtering';
 import OverlayContainer from './Overlay/OverlayContainer';
 
 scrollingFunction();
+let cartItems = [];
 
 class App extends Component {
   constructor() {
@@ -39,12 +39,18 @@ class App extends Component {
     };
   }
 
+
   addToCart = (e) => {
-    this.state.products.map(item => {
+    this.state.products.map((item, i) => {
       if (item.id == e.target.closest('.products__box').id) {
+        localStorage.setItem(`cartItems${[i]}`, JSON.stringify(item));
+        cartItems.push(item);
+        // console.log(cartItems);
+        // localStorage.setItem(item.id, );
         this.setState({
-          cart: item
+          cart: cartItems
         });
+        // item.push(this.state.cart);
       }
     });
   }
@@ -133,8 +139,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header headerContent={headerContent} />
-        <Nav navContent={navContent} />
-        <Cart addToCart={this.addToCart} />
+        <NavContainer 
+          navContent={navContent} 
+          addToCart={this.state.cart} 
+        />
         <section className="container section" id="content">
           <div className="row">
             <Main mainContent={mainContent} />
@@ -166,7 +174,8 @@ class App extends Component {
           addToCart={this.addToCart}
           toggleOverlay={this.state.isOpen}
           getClickedProduct={this.state.clickedItem}
-          closeOverlay={this.closeOverlay} />
+          closeOverlay={this.closeOverlay} 
+        />
       </div>
     );
   }

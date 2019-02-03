@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Nav from './Nav';
-import Cart from '../Cart/Cart';
+import CartContainer from '../Cart/Cart';
 
 class NavContainer extends Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class NavContainer extends Component {
     };
 
     render() {
-        const { navContent } = this.props
+        const { navContent, addToCart } = this.props
         return (
             <div>
                 <nav name="nav" className="Nav">
@@ -36,7 +36,7 @@ class NavContainer extends Component {
                         </ul>
                         <div className="Nav__dynamic">
                             <button className="Nav__action-icon Nav__action-icon--login"></button>
-                            <Cart />
+                            <CartContainer addToCart={addToCart} />
                         </div>
                     </div>
                 </nav>
