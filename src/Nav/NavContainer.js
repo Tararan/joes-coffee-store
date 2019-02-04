@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Nav from './Nav';
-import CartContainer from '../Cart/Cart';
+import CartContainer from '../Cart/CartContainer';
 
 class NavContainer extends Component {
     constructor(props) {

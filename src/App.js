@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import scrollingFunction from './scrollingFunction';
 import toggleBlur from './Overlay/overlayFunctions/toggleBlur';
 import './styles/App.scss';
+// import CartContainer from './Cart/CartContainer';
 
 import Header from './Header/HeaderContainer';
 import { headerContent } from './Header/headerContent';
@@ -143,6 +144,7 @@ class App extends Component {
           navContent={navContent} 
           addToCart={this.state.cart} 
         />
+        {/* <CartContainer addToCart={this.state.cart} /> */}
         <section className="container section" id="content">
           <div className="row">
             <Main mainContent={mainContent} />
