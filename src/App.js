@@ -39,19 +39,19 @@ class App extends Component {
       isOpen: true
     };
   }
-
-
+  componentDidMount() {
+         this.setState({
+          cart: JSON.parse(localStorage.getItem('cartItemsStorage'))
+        });
+}
   addToCart = (e) => {
     this.state.products.map((item, i) => {
       if (item.id == e.target.closest('.products__box').id) {
-        localStorage.setItem(`cartItems${[i]}`, JSON.stringify(item));
         cartItems.push(item);
-        // console.log(cartItems);
-        // localStorage.setItem(item.id, );
+        localStorage.setItem('cartItemsStorage', JSON.stringify(cartItems));
         this.setState({
-          cart: cartItems
+          cart: JSON.parse(localStorage.getItem('cartItemsStorage'))
         });
-        // item.push(this.state.cart);
       }
     });
   }
