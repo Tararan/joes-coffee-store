@@ -12,8 +12,8 @@ class CartContainer extends Component {
     };
 
     render() {
-        const { addToCart } = this.props;
-        if (addToCart !== undefined && addToCart !== null) {
+        const { addToCart, removeFromCart } = this.props;
+        if (addToCart !== undefined || addToCart !== null || !addToCart.length === 0) {
             return (
                 <span className="Cart">
                     <button className="Cart__button"
@@ -25,6 +25,7 @@ class CartContainer extends Component {
                             return (
                                 <Cart
                                     key={`Cart-key-${i}`}
+                                    removeFromCart={removeFromCart}
                                     addToCart={addToCart}
                                     id={data.id}
                                     boximage={data.boximage}

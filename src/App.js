@@ -25,17 +25,7 @@ scrollingFunction();
 
 const prevCartItems = JSON.parse(localStorage.getItem('cartItemsStorage'));
 const cartItems = prevCartItems !== null ? prevCartItems : [];
-
-// cartItems = cartItems.push(JSON.parse(localStorage.getItem('cartItemsStorage')));
 console.log(cartItems);
-
-
-/* if (cartItems === undefined || cartItems === null) {
-  let cartItems = [];
-  JSON.parse(localStorage.setItem('cartItemsStorage', cartItems));
-} else {
-  let cartItems = JSON.parse(localStorage.getItem('cartItemsStorage'));
-} */
 
 class App extends Component {
   constructor() {
@@ -59,12 +49,23 @@ class App extends Component {
     });
   }
 
+  removeFromCart = (e) => {
+    cartItems.map((item, i) => {
+    if (item.id == e.target.closest('.Cart__menu-item').id) {
+      cartItems.splice(i,1);
+      console.log(cartItems);
+      console.log(i);
+      this.setState({
+        cart: cartItems
+      });
+    }
+  })
+}
+
   addToCart = (e) => {
     this.state.products.map((item, i) => {
       if (item.id == e.target.closest('.products__box').id) {
         cartItems.push(item);
-        // let countCartItems = cartItems.length;
-        // console.log(countCartItems);
         localStorage.setItem('cartItemsStorage', JSON.stringify(cartItems));
         this.setState({
           cart: cartItems
@@ -160,6 +161,7 @@ class App extends Component {
         <NavContainer
           navContent={navContent}
           addToCart={this.state.cart}
+          removeFromCart={this.removeFromCart}
         />
         <section className="container section" id="content">
           <div className="row">
