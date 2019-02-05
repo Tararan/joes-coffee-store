@@ -1,8 +1,8 @@
+import './styles/App.scss';
 import React, { Component } from 'react';
 import scrollingFunction from './scrollingFunction';
 import toggleBlur from './Overlay/overlayFunctions/toggleBlur';
-import './styles/App.scss';
-// import CartContainer from './Cart/CartContainer';
+import Filtering from './Filtering/Filtering';
 
 import Header from './Header/HeaderContainer';
 import { headerContent } from './Header/headerContent';
@@ -19,11 +19,10 @@ import { asideContent } from './Aside/asideContent';
 import ProductsContainer from './Products/ProductsContainer';
 import { productsContent } from './Products/productsContent';
 
-import Filtering from './Filtering/Filtering';
 import OverlayContainer from './Overlay/OverlayContainer';
 
 scrollingFunction();
-let cartItems = [];
+let cartItems = JSON.parse(localStorage.getItem('cartItemsStorage'));
 
 class App extends Component {
   constructor() {
@@ -39,18 +38,25 @@ class App extends Component {
       isOpen: true
     };
   }
+
   componentDidMount() {
-         this.setState({
-          cart: JSON.parse(localStorage.getItem('cartItemsStorage'))
-        });
-}
+    this.setState({
+      cart: cartItems
+    });  
+  }
+  removeFromCart = () => {
+    console.log('removing...');
+  }
+
   addToCart = (e) => {
     this.state.products.map((item, i) => {
       if (item.id == e.target.closest('.products__box').id) {
         cartItems.push(item);
+        let countCartItems = cartItems.length;
+        console.log(countCartItems);
         localStorage.setItem('cartItemsStorage', JSON.stringify(cartItems));
         this.setState({
-          cart: JSON.parse(localStorage.getItem('cartItemsStorage'))
+          cart: cartItems
         });
       }
     });
@@ -143,6 +149,7 @@ class App extends Component {
         <NavContainer 
           navContent={navContent} 
           addToCart={this.state.cart} 
+          removeFromCart={removeFromCart}
         />
         {/* <CartContainer addToCart={this.state.cart} /> */}
         <section className="container section" id="content">

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Cart from './Cart';
 
-// productstitle={addToCart.productsTitle}
 class CartContainer extends Component {
 constructor(props) {
     super(props);
@@ -13,7 +12,7 @@ ToggleCartMenu = () => {
 };
 
 render() {
-    const { addToCart } = this.props;
+    const { addToCart, removeFromCart } = this.props;
     if(addToCart !== undefined) {
     return (
         <span className="Cart">
@@ -26,6 +25,7 @@ render() {
                         return (
                         <Cart
                             key={`Cart-key-${i}`}
+                            removeFromCart = {removeFromCart}
                             addToCart= {addToCart}
                             id={data.id}
                             boximage={data.boximage}
