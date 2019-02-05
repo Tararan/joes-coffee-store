@@ -22,7 +22,20 @@ import { productsContent } from './Products/productsContent';
 import OverlayContainer from './Overlay/OverlayContainer';
 
 scrollingFunction();
-let cartItems = JSON.parse(localStorage.getItem('cartItemsStorage'));
+
+const prevCartItems = JSON.parse(localStorage.getItem('cartItemsStorage'));
+const cartItems = prevCartItems !== null ? prevCartItems : [];
+
+// cartItems = cartItems.push(JSON.parse(localStorage.getItem('cartItemsStorage')));
+console.log(cartItems);
+
+
+/* if (cartItems === undefined || cartItems === null) {
+  let cartItems = [];
+  JSON.parse(localStorage.setItem('cartItemsStorage', cartItems));
+} else {
+  let cartItems = JSON.parse(localStorage.getItem('cartItemsStorage'));
+} */
 
 class App extends Component {
   constructor() {
@@ -40,20 +53,18 @@ class App extends Component {
   }
 
   componentDidMount() {
+    scrollingFunction();
     this.setState({
       cart: cartItems
-    });  
-  }
-  removeFromCart = () => {
-    console.log('removing...');
+    });
   }
 
   addToCart = (e) => {
     this.state.products.map((item, i) => {
       if (item.id == e.target.closest('.products__box').id) {
         cartItems.push(item);
-        let countCartItems = cartItems.length;
-        console.log(countCartItems);
+        // let countCartItems = cartItems.length;
+        // console.log(countCartItems);
         localStorage.setItem('cartItemsStorage', JSON.stringify(cartItems));
         this.setState({
           cart: cartItems
@@ -146,12 +157,10 @@ class App extends Component {
     return (
       <div className="App">
         <Header headerContent={headerContent} />
-        <NavContainer 
-          navContent={navContent} 
-          addToCart={this.state.cart} 
-          removeFromCart={removeFromCart}
+        <NavContainer
+          navContent={navContent}
+          addToCart={this.state.cart}
         />
-        {/* <CartContainer addToCart={this.state.cart} /> */}
         <section className="container section" id="content">
           <div className="row">
             <Main mainContent={mainContent} />
@@ -183,7 +192,7 @@ class App extends Component {
           addToCart={this.addToCart}
           toggleOverlay={this.state.isOpen}
           getClickedProduct={this.state.clickedItem}
-          closeOverlay={this.closeOverlay} 
+          closeOverlay={this.closeOverlay}
         />
       </div>
     );

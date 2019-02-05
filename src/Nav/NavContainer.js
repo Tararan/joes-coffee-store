@@ -13,7 +13,7 @@ class NavContainer extends Component {
     };
 
     render() {
-        const { navContent, addToCart, removeFromCart } = this.props
+        const { navContent, addToCart } = this.props
         return (
             <div>
                 <nav name="nav" className="Nav">
@@ -36,9 +36,9 @@ class NavContainer extends Component {
                         </ul>
                         <div className="Nav__dynamic">
                             <button className="Nav__action-icon Nav__action-icon--login"></button>
-                            <CartContainer 
-                            addToCart={addToCart} 
-                            removeFromCart={removeFromCart}
+                            <CartContainer
+                                addToCart={addToCart}
+                            // removeFromCart={removeFromCart}
                             />
                         </div>
                     </div>
