@@ -25,7 +25,7 @@ scrollingFunction();
 
 const prevCartItems = JSON.parse(localStorage.getItem('cartItemsStorage'));
 const cartItems = prevCartItems !== null ? prevCartItems : [];
-console.log(cartItems);
+// console.log(cartItems);
 
 class App extends Component {
   constructor() {
@@ -51,10 +51,13 @@ class App extends Component {
 
   removeFromCart = (e) => {
     cartItems.map((item, i) => {
-    if (item.id == e.target.closest('.Cart__menu-item').id) {
-      cartItems.splice(i,1);
+      console.log(Number(e.target.closest('.Cart__menu-item').getAttribute('index')));
+      console.log(Number(item.id));
+    if (Number(item.id) === Number(e.target.closest('.Cart__menu-item').id)) {
+      cartItems.splice(i, 1);
       console.log(cartItems);
-      console.log(i);
+      console.log(e.target.closest('.Cart__menu-item').getAttribute('index'));
+      localStorage.setItem('cartItemsStorage', JSON.stringify(cartItems));
       this.setState({
         cart: cartItems
       });
@@ -64,7 +67,7 @@ class App extends Component {
 
   addToCart = (e) => {
     this.state.products.map((item, i) => {
-      if (item.id == e.target.closest('.products__box').id) {
+      if ((item.id) == e.target.closest('.products__box').id) {
         cartItems.push(item);
         localStorage.setItem('cartItemsStorage', JSON.stringify(cartItems));
         this.setState({

@@ -2,9 +2,9 @@ import React, { Component } from "react";
 
 class Cart extends Component {
     render() {
-        const { id, boximage, boxtitle, boxprice, discountprice, removeFromCart } = this.props;
+        const { id, index, boximage, boxtitle, boxprice, discountprice, removeFromCart } = this.props;
         return (
-            <li id={id} className={`Cart__menu-item ${boxtitle ? '' : 'hide'}`}>
+            <li id={id} index={index} className={`Cart__menu-item ${boxtitle ? '' : 'hide'}`}>
                 <img src={boximage} alt="product-small" />
                 <span>{boxtitle}</span>
                 <span>{discountprice ? `${discountprice}` : `${boxprice}`}</span>

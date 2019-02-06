@@ -13,12 +13,12 @@ class CartContainer extends Component {
 
     render() {
         const { addToCart, removeFromCart } = this.props;
-        if (addToCart !== undefined || addToCart !== null || !addToCart.length === 0) {
+        if (addToCart.length !== 0) {
             return (
                 <span className="Cart">
                     <button className="Cart__button"
                         onClick={this.ToggleCartMenu}>
-                        <span className="Cart__button-count">0</span>
+                        <span className="Cart__button-count">{addToCart.length}</span>
                     </button>
                     <ul className={`Cart__menu ${this.state.isMenuOpen ? "" : "Cart__menu--is-open"}`}>
                         {addToCart.map((data, i) => {
@@ -28,6 +28,7 @@ class CartContainer extends Component {
                                     removeFromCart={removeFromCart}
                                     addToCart={addToCart}
                                     id={data.id}
+                                    index={i}
                                     boximage={data.boximage}
                                     boxtitle={data.boxtitle}
                                     boxprice={data.boxprice}
@@ -43,7 +44,7 @@ class CartContainer extends Component {
                 <span className="Cart">
                     <button className="Cart__button"
                         onClick={this.ToggleCartMenu}>
-                        <span className="Cart__button-count">0</span>
+                        <span className="Cart__button-count">{addToCart.length}</span>
                     </button>
                     <ul className={`Cart__menu ${this.state.isMenuOpen ? "" : "Cart__menu--is-open"}`}>
                         <li className='Cart__menu-item'>
