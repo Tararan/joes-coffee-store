@@ -47,14 +47,30 @@
 
   &__menu {
     position: absolute;
-    z-index: 100;
+    color: $light-brown;
+    z-index: 10;
     right: 0; 
     top: 49px;
     width: 250px;
     padding: 10px 20px;
-    border: 1px solid $light-brown;
+    border: 1px solid $dark-brown;
     border-radius: 0 0 10px 10px;
-    background-color: $light-brown-75;
+    background-color: $brown;
+    transform-origin: top;
+    opacity: 0;
+    transform: scaleY(0.25);
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.25s ease-in-out;
+  }
+
+  &__menu--is-open {
+    opacity: 1;
+    transform: scaleY(1);
+    visibility: visible;
+    pointer-events: all;
+
+    transition: all 0.25s ease-in-out;
   }
 
   &__menu-item {
@@ -71,6 +87,7 @@
 
     &__menu-item-delete {
       width: 25px;
+      color: $dark-brown;
       height: 25px;
       background-color: $light-red;
       border-radius: 100%;

@@ -51,12 +51,8 @@ class App extends Component {
 
   removeFromCart = (e) => {
     cartItems.map((item, i) => {
-      console.log(Number(e.target.closest('.Cart__menu-item').getAttribute('index')));
-      console.log(Number(item.id));
-    if (Number(item.id) === Number(e.target.closest('.Cart__menu-item').id)) {
+    if (Number(i) === Number(e.target.closest('.Cart__menu-item').getAttribute('index'))) {
       cartItems.splice(i, 1);
-      console.log(cartItems);
-      console.log(e.target.closest('.Cart__menu-item').getAttribute('index'));
       localStorage.setItem('cartItemsStorage', JSON.stringify(cartItems));
       this.setState({
         cart: cartItems
