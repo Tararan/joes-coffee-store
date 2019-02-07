@@ -120,3 +120,10 @@ a:focus {
   position: absolute;
   filter: blur(20px);
 }
+
+a, button {
+  &:focus, &:active {
+    box-shadow: none !important;
+    outline: none !important;
+}
+}

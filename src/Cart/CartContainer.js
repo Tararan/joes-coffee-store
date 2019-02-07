@@ -22,6 +22,11 @@ class CartContainer extends Component {
                     </button>
                     <ul className={`Cart__menu ${this.state.isMenuOpen ? "" : "Cart__menu--is-open"}`}>
                         {addToCart.map((data, i) => {
+                            let priceCount = addToCart.map(price => parseFloat(price.boxprice.replace('$', '')))
+                            const reducer = (accumulator, currentValue) => accumulator + currentValue;
+                            const priceSum = (priceCount.reduce(reducer));
+                            console.log(priceCount);
+                            console.log(priceSum);
                             return (
                                 <Cart
                                     key={`Cart-key-${i}`}
@@ -36,6 +41,16 @@ class CartContainer extends Component {
                                 />
                             );
                         })}
+                        <div>
+                            {addToCart.map((data, i) => {
+                                let priceCount = addToCart.map(price => parseFloat(price.boxprice.replace('$', '')))
+                                const reducer = (accumulator, currentValue) => accumulator + currentValue;
+                                const priceSum = (priceCount.reduce(reducer));
+                                console.log(priceCount);
+                                console.log(priceSum);
+                                return priceSum;
+                            })}
+                        </div>
                     </ul>
                 </span>
             )
