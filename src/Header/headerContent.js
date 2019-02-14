@@ -1,7 +1,7 @@
 export const headerContent = [
   {
     videomp4: `
-        http://goat10.endooo.net/coffee-beans.mp4
+    https://res.cloudinary.com/dmqwm8tlw/video/upload/v1550094430/JoesCoffeeStore/CoffeeBeans-lq.mov
     `,
     videowebm: `
         http://goat10.endooo.net/coffee-beans.webm
