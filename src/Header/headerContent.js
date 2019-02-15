@@ -1,10 +1,10 @@
 export const headerContent = [
   {
     videomp4: `
-    https://res.cloudinary.com/dmqwm8tlw/video/upload/v1550094430/JoesCoffeeStore/CoffeeBeans-lq.mov
+    https://res.cloudinary.com/dmqwm8tlw/video/upload/v1550209009/JoesCoffeeStore/CoffeeBeans-lq.mp4
     `,
     videowebm: `
-        http://goat10.endooo.net/coffee-beans.webm
+    https://res.cloudinary.com/dmqwm8tlw/video/upload/v1550209138/JoesCoffeeStore/CoffeeBeans-lq-webm.webm
     `,
     videoposter: `
         ../images/header-3.jpg
