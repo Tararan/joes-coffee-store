@@ -48,30 +48,19 @@ class App extends Component {
       cart: cartItems
     });
   }
-  updatePrice = (e) => {
-    let priceCount = cartItems.map(price => parseFloat(price.discountprice ? `${price.discountprice.replace('$', '')}`:`${price.boxprice.replace('$', '')}`))
-    const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    const priceSum = (priceCount.reduce(reducer).toFixed(2));
-    console.log(cartItems);
-    console.log(priceSum);
-    this.setState({
-      totalCartSum: priceSum
-    });
-  }
   removeFromCart = (e) => {
-    { this.updatePrice() }
     cartItems.map((item, i) => {
-    if (Number(i) === Number(e.target.closest('.Cart__menu-item').getAttribute('index'))) {
-      cartItems.splice(i, 1);
-      localStorage.setItem('cartItemsStorage', JSON.stringify(cartItems));
-      this.setState({
-        cart: cartItems
-      });
-    }
+      if (Number(i) === Number(e.target.closest('.Cart__menu-item').getAttribute('index'))) {
+        cartItems.splice(i, 1);
+        localStorage.setItem('cartItemsStorage', JSON.stringify(cartItems));
+        this.setState({
+          cart: cartItems
+        });
+      }
     })
+    { this.updatePrice() }
   }
   addToCart = (e) => {
-    { this.updatePrice() }
     this.state.products.map((item, i) => {
       if ((item.id) == e.target.closest('.products__box').id) {
         cartItems.push(item);
@@ -81,6 +70,22 @@ class App extends Component {
         });
       }
     });
+    { this.updatePrice() }
+  }
+  updatePrice = (e) => {
+    if(cartItems[0]) {
+      let priceCount = cartItems.map(price => parseFloat(price.discountprice ? `${price.discountprice.replace('$', '')}`:`${price.boxprice.replace('$', '')}`))
+      const reducer = (accumulator, currentValue) => accumulator + currentValue;
+      const priceSum = (priceCount.reduce(reducer).toFixed(2));
+      this.setState({
+        totalCartSum: priceSum
+      });
+    } else {
+      const priceSum = 0;
+      this.setState({
+        totalCartSum: priceSum
+      });
+    }
   }
   getClickedProduct = (e) => {
     this.state.products.map(item => {

@@ -13,7 +13,7 @@ class NavContainer extends Component {
     };
 
     render() {
-        const { navContent, addToCart, removeFromCart } = this.props
+        const { navContent, addToCart, removeFromCart, updatePrice } = this.props
         return (
             <div>
                 <nav name="nav" className="Nav">
@@ -38,7 +38,8 @@ class NavContainer extends Component {
                             <button className="Nav__action-icon Nav__action-icon--login"></button>
                             <CartContainer
                                 addToCart={addToCart}
-                            removeFromCart={removeFromCart}
+                                removeFromCart={removeFromCart}
+                                updatePrice={updatePrice}
                             />
                         </div>
                     </div>

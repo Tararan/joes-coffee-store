@@ -12,7 +12,7 @@ class CartContainer extends Component {
     };
 
     render() {
-        const { addToCart, removeFromCart } = this.props;
+        const { addToCart, removeFromCart, updatePrice } = this.props;
         if (addToCart.length !== 0) {
             return (
                 <span className="Cart">
@@ -33,11 +33,12 @@ class CartContainer extends Component {
                                     boxtitle={data.boxtitle}
                                     boxprice={data.boxprice}
                                     discountprice={data.discountprice}
+                                    updatePrice={updatePrice}
                                 />
                             );
                         })}
                         <div>
-                            {/* {addToCart.priceSum} */}
+                            {updatePrice}
                         </div>
                     </ul>
                 </span>
