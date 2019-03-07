@@ -25,7 +25,6 @@ scrollingFunction();
 
 const prevCartItems = JSON.parse(localStorage.getItem('cartItemsStorage'));
 const cartItems = prevCartItems !== null ? prevCartItems : [];
-// console.log(cartItems);
 
 class App extends Component {
   constructor() {
@@ -38,7 +37,8 @@ class App extends Component {
       isfilterbestSeller: false,
       isfilterdiscountPrice: false,
       isfilteravailable: false,
-      isOpen: true
+      isOpen: true,
+      totalCartSum: 0
     };
   }
 
@@ -48,8 +48,18 @@ class App extends Component {
       cart: cartItems
     });
   }
-
+  updatePrice = (e) => {
+    let priceCount = cartItems.map(price => parseFloat(price.discountprice ? `${price.discountprice.replace('$', '')}`:`${price.boxprice.replace('$', '')}`))
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    const priceSum = (priceCount.reduce(reducer).toFixed(2));
+    console.log(cartItems);
+    console.log(priceSum);
+    this.setState({
+      totalCartSum: priceSum
+    });
+  }
   removeFromCart = (e) => {
+    { this.updatePrice() }
     cartItems.map((item, i) => {
     if (Number(i) === Number(e.target.closest('.Cart__menu-item').getAttribute('index'))) {
       cartItems.splice(i, 1);
@@ -58,10 +68,10 @@ class App extends Component {
         cart: cartItems
       });
     }
-  })
-}
-
+    })
+  }
   addToCart = (e) => {
+    { this.updatePrice() }
     this.state.products.map((item, i) => {
       if ((item.id) == e.target.closest('.products__box').id) {
         cartItems.push(item);
@@ -72,7 +82,6 @@ class App extends Component {
       }
     });
   }
-
   getClickedProduct = (e) => {
     this.state.products.map(item => {
       if (item.id == e.target.closest('.products__box').id) {
@@ -82,17 +91,14 @@ class App extends Component {
       }
     });
   }
-
   toggleOverlay = () => {
     { toggleBlur() };
     this.setState({ isOpen: !this.state.isOpen });
   }
-
   closeOverlay = () => {
     { toggleBlur() };
     this.setState({ isOpen: !this.state.isOpen });
   }
-
   onfilterbestSeller = () => {
     this.setState({ isfilterbestSeller: !this.state.isfilterbestSeller });
   }
@@ -102,17 +108,16 @@ class App extends Component {
   onfilteravailable = () => {
     this.setState({ isfilteravailable: !this.state.isfilteravailable });
   }
-
   onSearchChange = (e) => {
     if (e.key === 'Enter') { this.setState({ searchfield: e.target.value }); }
   }
-
   searchOnClick = () => {
     const search = document.getElementById('search');
     this.setState({ searchfield: search.value });
   }
 
   render() {
+    
     const filteredProducts = this.state.products.filter(item => {
       const searchedItem = item.boxtitle.toLowerCase().includes(this.state.searchfield.toLowerCase());
       if (!this.state.isfilterdiscountPrice && !this.state.isfilterbestSeller && !this.state.isfilteravailable) {
@@ -156,11 +161,12 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Header headerContent={headerContent} />
+        <Header headerContent={headerContent} playVideo = {this.playVideo} />
         <NavContainer
           navContent={navContent}
           addToCart={this.state.cart}
           removeFromCart={this.removeFromCart}
+          updatePrice = {this.state.totalCartSum}
         />
         <section className="container section" id="content">
           <div className="row">
