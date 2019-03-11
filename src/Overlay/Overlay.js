@@ -4,7 +4,7 @@ import closeBtn from "../images/assets/close-2.png";
 
 class Overlay extends Component {
     render() {
-        const { boximage, boxtitle, boxprice, discountprice, bestseller, available, description, closeOverlay, toggleOverlay } = this.props;
+        const { boximage, boxtitle, addToCart, boxprice, discountprice, bestseller, available, description, closeOverlay, toggleOverlay } = this.props;
         return (
             <section className={`Overlay
         ${!toggleOverlay ? 'Overlay--is-open' : ''}
@@ -27,7 +27,7 @@ class Overlay extends Component {
                             </p>
                             <div className="button__wrapper">
                                 <button className={`button ${available ? 'button--product-box' : 'button--unavailable'}`}
-                                >
+                                onClick={addToCart}>
                                     {available ? 'Add to cart' : 'Unavailable'}
                                 </button>
                             </div>

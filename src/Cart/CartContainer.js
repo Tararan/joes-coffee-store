@@ -37,8 +37,9 @@ class CartContainer extends Component {
                                 />
                             );
                         })}
-                        <div>
-                            {updatePrice}
+                        <div className="Cart__total">
+                            <span className="Cart__total-content">Total:</span> 
+                            <span className="Cart__total-content">${updatePrice}</span>
                         </div>
                     </ul>
                 </span>

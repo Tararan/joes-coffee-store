@@ -42,8 +42,25 @@ class App extends Component {
     };
   }
 
+  updatePrice = (e) => {
+    if(cartItems[0]) {
+      let priceCount = cartItems.map(price => parseFloat(price.discountprice ? `${price.discountprice.replace('$', '')}`:`${price.boxprice.replace('$', '')}`))
+      const reducer = (accumulator, currentValue) => accumulator + currentValue;
+      const priceSum = (priceCount.reduce(reducer).toFixed(2));
+      this.setState({
+        totalCartSum: priceSum
+      });
+    } else {
+      const priceSum = 0;
+      this.setState({
+        totalCartSum: priceSum
+      });
+    }
+  }
+
   componentDidMount() {
     scrollingFunction();
+    this.updatePrice();
     this.setState({
       cart: cartItems
     });
@@ -62,31 +79,18 @@ class App extends Component {
   }
   addToCart = (e) => {
     this.state.products.map((item, i) => {
-      if ((item.id) == e.target.closest('.products__box').id) {
+      console.log(item.id);
+/*       if ((item.id) == e.target.closest('.products__box').id) {
         cartItems.push(item);
         localStorage.setItem('cartItemsStorage', JSON.stringify(cartItems));
         this.setState({
           cart: cartItems
         });
-      }
+      } */
     });
     { this.updatePrice() }
   }
-  updatePrice = (e) => {
-    if(cartItems[0]) {
-      let priceCount = cartItems.map(price => parseFloat(price.discountprice ? `${price.discountprice.replace('$', '')}`:`${price.boxprice.replace('$', '')}`))
-      const reducer = (accumulator, currentValue) => accumulator + currentValue;
-      const priceSum = (priceCount.reduce(reducer).toFixed(2));
-      this.setState({
-        totalCartSum: priceSum
-      });
-    } else {
-      const priceSum = 0;
-      this.setState({
-        totalCartSum: priceSum
-      });
-    }
-  }
+
   getClickedProduct = (e) => {
     this.state.products.map(item => {
       if (item.id == e.target.closest('.products__box').id) {

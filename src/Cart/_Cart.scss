@@ -89,6 +89,14 @@
     transition: all 0.25s ease-in-out;
   }
 
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid $dark-brown;
+  }
+
   &__menu-item {
     width: 100%;
     display: flex;
@@ -101,31 +109,31 @@
     height: 45px;
    }
 
-    &__menu-item-delete {
-      width: 25px;
-      color: $dark-brown;
-      height: 25px;
-      background-color: $light-red;
-      border-radius: 100%;
-      display: flex;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 1px 2px 8px 2px rgba(0,0,0,0.4);
+  &__menu-item-delete {
+    width: 25px;
+    color: $dark-brown;
+    height: 25px;
+    background-color: $light-red;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 1px 2px 14px 2px rgba(0,0,0,0.3);
+    transition: box-shadow 0.5s ease-in-out;
+
+    &:hover {
+      box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);
       transition: box-shadow 0.5s ease-in-out;
-
-      &:hover {
-        box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);
-        transition: box-shadow 0.5s ease-in-out;
-      }
     }
+  }
 
-    &__menu-item-delete-icon {
-      display: flex;
-      align-items: center;
-      font-size: 2.5em;
-      height: inherit;
-      position: relative;
-      top: -9%;
-      right: -1%;
-    }
+  &__menu-item-delete-icon {
+    display: flex;
+    align-items: center;
+    font-size: 2.5em;
+    height: inherit;
+    position: relative;
+    top: -9%;
+    right: -1%;
+  }
 }
