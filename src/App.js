@@ -79,14 +79,13 @@ class App extends Component {
   }
   addToCart = (e) => {
     this.state.products.map((item, i) => {
-      console.log(item.id);
-/*       if ((item.id) == e.target.closest('.products__box').id) {
+      if ((item.id) == e.target.closest('.js-target-id').id) {
         cartItems.push(item);
         localStorage.setItem('cartItemsStorage', JSON.stringify(cartItems));
         this.setState({
           cart: cartItems
         });
-      } */
+      }
     });
     { this.updatePrice() }
   }

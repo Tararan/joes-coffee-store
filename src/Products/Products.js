@@ -5,7 +5,7 @@ class Products extends Component {
     const { id, boximage, boxtitle, boxprice, discountprice, bestseller, available, addToCart, toggleOverlay, description, getClickedProduct } = this.props;
     return (
       <div className="col-md-4">
-        <article id={id} className={`products__box 
+        <article id={id} className={`js-target-id products__box 
             ${discountprice ? 'products__box--discount' : ''}
             ${bestseller ? 'products__box--best-seller' : ''} 
             ${available ? '' : 'products__box--unavailable'} `}>

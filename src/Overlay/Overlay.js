@@ -4,9 +4,9 @@ import closeBtn from "../images/assets/close-2.png";
 
 class Overlay extends Component {
     render() {
-        const { boximage, boxtitle, addToCart, boxprice, discountprice, bestseller, available, description, closeOverlay, toggleOverlay } = this.props;
+        const { boximage, id, boxtitle, addToCart, boxprice, discountprice, bestseller, available, description, closeOverlay, toggleOverlay } = this.props;
         return (
-            <section className={`Overlay
+            <section id={id} className={`js-target-id Overlay
         ${!toggleOverlay ? 'Overlay--is-open' : ''}
         ${bestseller ? 'Overlay--best-seller' : ''}`}>
                 <button onClick={closeOverlay} className="Overlay__close">

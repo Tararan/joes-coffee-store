@@ -3,13 +3,11 @@ import { Link } from 'react-scroll';
 
 import logo from '../images/logo-large.png';
 import scrollDownPointer from '../images/assets/down-arrow-sketch.png';
-// import videoposter from '../images/header-3.jpg';
-
 
 class Header extends Component {
     render()
     {
-        const { videomp4, videowebm, header, subheader, playVideo } = this.props;
+        const { videomp4, videowebm, header, subheader } = this.props;
         return (
             <header className="Header">
                 <div className="Header__video-container">
